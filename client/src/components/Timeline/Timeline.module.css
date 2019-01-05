@@ -1,0 +1,10 @@
+.timeline {
+  background-color: #30332e;
+  display: flex;
+  padding: 40px;
+}
+
+h1 {
+  color: gray;
+  text-align: right;
+}

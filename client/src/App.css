@@ -1,3 +1,42 @@
 .App {
+  height: 100vh;
+
   text-align: center;
+}
+
+.body {
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+}
+
+h1 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-size: 42px;
+  /* letter-spacing: 0.04em; */
+  text-transform: capitalize;
+  margin: 0;
+}
+
+h2 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+}
+
+h3 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+h4 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: 0.04em;
+  margin: 12px;
 }

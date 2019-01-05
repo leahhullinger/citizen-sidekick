@@ -1,0 +1,47 @@
+.sideNav {
+  height: 100%;
+  width: 160px;
+  position: absolute;
+  top: 1;
+  left: 1;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-right: 40px;
+  padding-left: 40px;
+  padding-top: 30px;
+  background-color: white;
+  border-right: 1px solid black;
+  /* border-right: 2px solid #e5e5e5; */
+  margin: 0;
+}
+
+.btn {
+  background: none;
+  border: none;
+  padding-bottom: 20px;
+}
+
+.link {
+  /* padding: 6px 8px 6px 16px; */
+  text-decoration: none;
+  font-size: 14px;
+  color: #818181;
+  display: block;
+  text-align: right;
+  line-height: 1.75;
+}
+
+.link:hover {
+  color: #f1f1f1;
+}
+@media screen and (max-height: 450px) {
+  .sideNav {
+    padding-top: 15px;
+  }
+  .sideNav a {
+    font-size: 18px;
+  }
+}
+.footer {
+  margin-top: 100px;
+  text-align: right;
+}

@@ -1,0 +1,55 @@
+.home {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+.left {
+  height: 100%;
+  width: 50%;
+  background-color: pink;
+}
+
+.img {
+  height: 1000px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+  margin: 40px;
+}
+
+.overlay {
+  /* background-color: rosybrown; */
+  width: 95%;
+  left: 0;
+  bottom: 0;
+  height: 92%;
+  position: absolute;
+  z-index: 1;
+  opacity: 0.3;
+  margin: 40px;
+}
+
+.title {
+  position: absolute;
+  top: 100px;
+  left: 75px;
+  z-index: 10;
+  font-size: 220px;
+  color: blue;
+  letter-spacing: 0.09em;
+  text-align: left;
+  line-height: 1.1em;
+}
+
+.link {
+  font-size: 48px;
+  font-weight: 400;
+  color: orangered;
+  position: absolute;
+  z-index: 5;
+  bottom: 50px;
+  left: 75px;
+}

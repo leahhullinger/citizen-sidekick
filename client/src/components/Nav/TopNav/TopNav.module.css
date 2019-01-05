@@ -1,7 +1,8 @@
-.navWrapper {
+.topNav {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  padding: 20px 40px 20px;
-  color: #040f3d;
+  align-items: center;
+  height: 60px;
+  border-bottom: 1px solid black;
+  padding: 0 40px 0 40px;
 }

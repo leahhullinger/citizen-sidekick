@@ -1,0 +1,3 @@
+/* 
+image: thumbnail, transcript
+*/

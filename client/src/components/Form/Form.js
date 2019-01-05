@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styles from "./Form.module.css";
 
 export const Input = ({ placeholder, label, onInputChange, input }) => {
