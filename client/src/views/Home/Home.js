@@ -8,13 +8,14 @@ import Miles from "../../Miles2.jpg";
 class Home extends Component {
   render() {
     return (
-      <div className={styles.home}>
-        {/* <img className={styles.img} src={HomeIMG} /> */}
-        <div className={styles.left} />
-        <img className={styles.img} src={Miles} />
-        <div className={styles.overlay} />
-        <h1 className={styles.title}>CITIZEN SIDEKICK</h1>
-        <a className={styles.link}>Enter</a>
+      <div className={styles.container}>
+        <div className={styles.bgImg} />
+        <div className={styles.content}>
+          <h1 className={styles.title}>CITIZEN SIDEKICK</h1>
+          <a className={styles.link} alt="Enter Citizen Sidekick">
+            <span className={styles.linkText}>Enter</span>
+          </a>
+        </div>
       </div>
     );
   }

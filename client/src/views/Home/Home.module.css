@@ -1,43 +1,30 @@
-.home {
+.container {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  overflow: hidden;
+  height: 100vh;
+  text-align: left;
 }
 
-.left {
-  height: 100%;
-  width: 50%;
-  background-color: pink;
-}
-
-.img {
-  height: 1000px;
-  position: absolute;
-  bottom: 0;
+.bgImg {
+  position: fixed;
+  top: 0;
   right: 0;
-  z-index: 0;
-  margin: 40px;
-}
-
-.overlay {
-  /* background-color: rosybrown; */
-  width: 95%;
   left: 0;
   bottom: 0;
-  height: 92%;
-  position: absolute;
-  z-index: 1;
-  opacity: 0.3;
-  margin: 40px;
+  background: url("../../Miles2.jpg") no-repeat center center;
+  background-size: auto 1000px;
+  z-index: -1;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
 }
 
 .title {
-  position: absolute;
-  top: 100px;
-  left: 75px;
-  z-index: 10;
-  font-size: 220px;
+  font-size: calc(12px + (220 - 12) * ((100vw - 300px) / (1600 - 300)));
   color: blue;
   letter-spacing: 0.09em;
   text-align: left;
@@ -45,11 +32,46 @@
 }
 
 .link {
-  font-size: 48px;
+  font-size: calc(12px + (48 - 12) * ((100vw - 300px) / (1600 - 300)));
   font-weight: 400;
   color: orangered;
-  position: absolute;
-  z-index: 5;
-  bottom: 50px;
-  left: 75px;
+}
+
+/** TODO: Add arrow icon, to be shown on mobile
+.link:after {
+  content: '->';
+}
+*/
+
+/** link text will not display on mobile screen
+.linkText {
+  display: none;
+}
+*/
+
+@media (min-width: 768px) {
+  .bgImg {
+    background-position: center right;
+    margin: 40px;
+  }
+
+  .content {
+    height: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .title {
+    padding-top: 100px;
+    padding-left: 75px;
+  }
+
+  .link {
+    padding-bottom: 50px;
+    padding-left: 75px;
+  }
+
+  .linkText {
+    display: inline-flex;
+  }
 }
