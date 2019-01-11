@@ -2,16 +2,18 @@ import React from "react";
 import { Icon } from "mx-react-components";
 import styles from "./Button.module.css";
 
-export const SimpleButton = ({ btnText, onClick }) => (
+export const SimpleButton = ({ children, btnText, onClick }) => (
   <button className={styles.simpleBtn} onClick={onClick}>
     {btnText}
+    {children}
   </button>
 );
 
-export const Button = ({ btnStyle, btnText, onClick }) => {
+export const Button = ({ children, btnText, onClick }) => {
   return (
     <button className={styles.btn_bold} onClick={onClick}>
       {btnText}
+      {children}
     </button>
   );
 };

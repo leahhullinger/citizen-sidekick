@@ -1,0 +1,30 @@
+.wrapper {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+}
+
+.label {
+  padding-left: 2px;
+  text-align: left;
+  padding-bottom: 7px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+}
+
+.label,
+.input {
+  font-family: "Helvetica Neue", sans-serif;
+  background-color: transparent;
+  color: black;
+}
+
+.input {
+  border: 1px solid #e5e5e5;
+  border-radius: 2px;
+  font-size: 16px;
+  height: 24px;
+  padding: 7px 20px;
+}

@@ -1,0 +1,41 @@
+/* .container {
+  display: flex;
+  height: 100vh;
+  position: relative;
+}
+
+.body {
+  flex: 1;
+  overflow: auto;
+}
+
+.mainContainer {
+  height: 100%;
+  display: grid;
+  grid-template-columns: auto;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+.mainTitle {
+  -webkit-text-stroke: 1.5px black;
+  color: black;
+  opacity: 0.05;
+}
+
+.innerMain {
+  padding: 50px;
+}
+
+@media (min-width: 768px) {
+  .container {
+  }
+  .mainContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .mainContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+} */

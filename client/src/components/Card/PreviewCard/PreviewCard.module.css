@@ -1,0 +1,49 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 300px;
+  margin: 15px;
+  background-color: black;
+}
+.imgWrapper {
+  height: 70%;
+  width: auto;
+  padding: 20px;
+  background-color: white;
+  margin: 10px;
+}
+
+.imgWrapper img {
+  max-height: 300px;
+  width: auto;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: black;
+  padding: 20px;
+}
+
+.actions button {
+  flex: 1;
+  border-radius: 2px;
+  margin: 2px;
+  padding: 5px;
+  background-color: white;
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  background-color: white;
+}
+
+.formWrapper button {
+  border-radius: 1px;
+  margin: 10px 6px 0;
+  min-width: 100px;
+  align-self: flex-end;
+}

@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 
-import Dashboard from "./dashboard-container";
-import TopNav from "../../../components/Nav/TopNav/TopNav";
-import SideNav from "../../../components/Nav/SideNav/SideNav";
+// import DashboardMain from "../DashboardMain/DashboardMain";
+import { NewFolderForm } from "../../../components/Folder/NewFolderForm/NewFolderForm";
+import Folder from "../../Folder/Folder";
 import Upload from "../../Upload/Upload";
-import Folder from "../folder/folder-container";
+import SideNav from "../../../components/Nav/SideNav/SideNav";
 
-import styles from "./dashboard-router.module.css";
+import styles from "./DashRouter.module.css";
 import {
   getFoldersComplete,
   getFilesComplete,
@@ -17,9 +17,18 @@ import {
   deleteFolderComplete,
   axiosGetAllFiles,
   axiosGetAllFolders
-} from "../../ducks/actions";
+} from "../../../ducks/actions";
 
-class DashboardRouter extends Component {
+const DashboardMain = (folders, files) => (
+  <div className={styles.mainContainer}>
+    <div>Render Recent File Links Here</div>
+    <div>expanded view of one file</div>
+    <div>hello</div>
+    <div>hello</div>
+  </div>
+);
+
+class DashRouter extends Component {
   componentDidMount() {
     axiosGetAllFolders().then(response => {
       this.props.dispatchSetFoldersState(response.data);
@@ -38,47 +47,54 @@ class DashboardRouter extends Component {
       match
     } = this.props;
     return (
-      <div className={styles.view}>
-        <TopNav />
+      <div className={styles.container}>
+        <SideNav
+          folders={folders}
+          match={match}
+          dispatchAddFolderToState={dispatchAddFolderToState}
+        />
         <div className={styles.body}>
-          <SideNav />
-          <div className={styles.contentWindow}>
-            <Switch>
-              <Route
-                exact
-                path="/user"
-                render={() => (
-                  <Dashboard
-                  // folders={folders}
-                  // files={files}
-                  // dispatchAddFolderToState={dispatchAddFolderToState}
-                  // dispatchDeleteFolder={dispatchDeleteFolder}
-                  // match={match}
-                  />
-                )}
-              />
-              <Route
-                path={`${match.url}/folder/:id`}
-                render={({ match }) => (
-                  <Folder
-                    folders={folders}
-                    files={files}
-                    dispatchDeleteFolder={dispatchDeleteFolder}
-                    match={match}
-                  />
-                )}
-              />
-              <Route
-                path="/user/upload"
-                render={({ match }) => (
-                  <Upload
-                    folders={folders}
-                    dispatchAddFile={dispatchAddUpload}
-                  />
-                )}
-              />
-            </Switch>
-          </div>
+          <Switch>
+            <Route
+              exact
+              path="/user"
+              render={() => (
+                <DashboardMain
+                  folders={folders}
+                  files={files}
+                  dispatchAddFolderToState={dispatchAddFolderToState}
+                  dispatchDeleteFolder={dispatchDeleteFolder}
+                  match={match}
+                />
+              )}
+            />
+            <Route
+              path={`${match.url}/folder/:id`}
+              render={({ match }) => (
+                <Folder
+                  folders={folders}
+                  files={files}
+                  dispatchDeleteFolder={dispatchDeleteFolder}
+                  match={match}
+                />
+              )}
+            />
+            <Route
+              path="/user/upload"
+              render={({ match }) => (
+                <Upload folders={folders} dispatchAddFile={dispatchAddUpload} />
+              )}
+            />
+            <Route
+              path="/user/folder/new"
+              render={({ match }) => (
+                <NewFolderForm
+                  folders={folders}
+                  dispatchAddFile={dispatchAddUpload}
+                />
+              )}
+            />
+          </Switch>
         </div>
       </div>
     );
@@ -105,4 +121,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(DashboardRouter);
+)(DashRouter);

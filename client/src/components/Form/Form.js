@@ -1,34 +1,63 @@
 import React from "react";
 import styles from "./Form.module.css";
 
-export const Input = ({ placeholder, label, onInputChange, input }) => {
+export const Form = ({ notes, onUpdateInput, folders }) => {
   return (
-    <span className={styles.wrapper}>
-      <label className={styles.label}>{label}</label>
-      <input
-        placeholder={placeholder}
-        className={styles.input}
-        onChange={onInputChange}
-      />
-    </span>
-  );
-};
+    <div className={styles.form}>
+      <span className={styles.row}>
+        <label>
+          Title
+          <input
+            type="text"
+            name="title"
+            value={notes.title}
+            onChange={onUpdateInput}
+          />
+        </label>
+      </span>
+      <span className={styles.row}>
+        <label>
+          Add to folder:
+          <select
+            placeholder="Add To Folder:"
+            value={notes.folder_id}
+            name="folder_id"
+            onChange={onUpdateInput}
+          >
+            <option value={0} disabled>
+              choose folder
+            </option>
+            {folders &&
+              folders.map(folder => (
+                <option
+                  key={folder.id}
+                  value={folder.id}
+                  onClick={() => console.log(folder.id)}
+                >
+                  {folder.folder_name}
+                </option>
+              ))}
+          </select>
+        </label>
 
-export const TextArea = ({ label, text, onInputChange }) => {
-  return (
-    <span className={styles.wrapper}>
-      <label className={styles.label}>{label}</label>
-      <textarea className={styles.textarea} onChange={onInputChange}>
-        {text}
-      </textarea>
-    </span>
-  );
-};
+        <label>
+          Add date:
+          <input
+            type="date"
+            name="date"
+            value={notes.date}
+            placeholder="Date"
+            onChange={onUpdateInput}
+          />
+        </label>
+      </span>
 
-export const Select = ({ option }) => {
-  return (
-    <span className={styles.wrapper}>
-      <select className={styles.select} placeholder="select folder" />
-    </span>
+      <span className={styles.row}>
+        <label>
+          Add notes:
+          <textarea value={notes.text} name="text" onChange={onUpdateInput} />
+        </label>
+      </span>
+    </div>
   );
 };

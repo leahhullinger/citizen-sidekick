@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import Home from "./views/Home/Home";
-import Dashboard from "./views/Dashboard/Dashboard";
+import DashRouter from "./views/Dashboard/DashRouter/DashRouter";
+import DashboardMain from "./views/Dashboard/DashboardMain/DashboardMain";
 import "./App.css";
 
 class App extends Component {
@@ -11,7 +12,7 @@ class App extends Component {
         <div className="body">
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/user" component={Dashboard} />
+            <Route path="/user" component={DashRouter} />
           </Switch>
         </div>
       </div>

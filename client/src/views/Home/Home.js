@@ -12,8 +12,13 @@ class Home extends Component {
         <div className={styles.bgImg} />
         <div className={styles.content}>
           <h1 className={styles.title}>CITIZEN SIDEKICK</h1>
-          <a className={styles.link} alt="Enter Citizen Sidekick">
-            <span className={styles.linkText}>Enter</span>
+          <a
+            className={styles.link}
+            alt="Enter Citizen Sidekick"
+            href="http://localhost:3005/auth"
+          >
+            {" "}
+            sign up / in
           </a>
         </div>
       </div>
