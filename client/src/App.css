@@ -43,3 +43,8 @@ h4 {
   letter-spacing: 0.04em;
   /* margin: 12px; */
 }
+
+.sideNavLink {
+  color: blue;
+  font-weight: 700;
+}

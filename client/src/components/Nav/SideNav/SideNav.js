@@ -56,10 +56,13 @@ class SideNav extends Component {
                     </Link>
                   );
                 })}
-              <Link to={`${match.url}/upload`}>
+              <Link className={styles.sideNavLink} to={`${match.url}/upload`}>
                 <h3>+ UPLOAD</h3>
               </Link>
-              <Link to={`${match.url}/new/folder`}>
+              <Link
+                className={styles.sideNavLink}
+                to={`${match.url}/new/folder`}
+              >
                 <h3>+ FOLDER</h3>
               </Link>
             </div>
