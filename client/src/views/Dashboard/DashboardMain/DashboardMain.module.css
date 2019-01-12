@@ -4,11 +4,16 @@
   grid-template-columns: auto;
   grid-column-gap: 10px;
   grid-row-gap: 10px;
+  padding-top: 150px;
 }
 .mainTitle {
   -webkit-text-stroke: 1.5px black;
   color: black;
   opacity: 0.05;
+}
+
+.fileList {
+  padding-left: 100px;
 }
 
 @media (min-width: 768px) {

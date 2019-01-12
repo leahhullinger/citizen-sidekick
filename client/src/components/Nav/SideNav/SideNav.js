@@ -37,21 +37,12 @@ class SideNav extends Component {
           className={[styles.sideNav, isOpen ? styles.isOpen : null].join(" ")}
         >
           <div className={styles.content}>
+            <h2 className={styles.logo}>Citizen Sidekick</h2>
             <div className={styles.section}>
               <h3>Tools</h3>
               <a href="#Upload">Transcribe</a>
               <a>Search & Rescue</a>
               <a>Code Backup</a>
-              <br />
-              <h3>
-                <Link to={`${match.url}/upload`}>+ UPLOAD</Link>
-              </h3>
-              <h3>
-                {" "}
-                <Link to={`${match.url}/new/folder`}>+ FOLDER</Link>
-              </h3>
-              <h3>+ NOTES</h3>
-              <br />
               <h3>Folders</h3>
               {!!folders &&
                 folders.map(folder => {
@@ -65,14 +56,21 @@ class SideNav extends Component {
                     </Link>
                   );
                 })}
+              <Link to={`${match.url}/upload`}>
+                <h3>+ UPLOAD</h3>
+              </Link>
+              <Link to={`${match.url}/new/folder`}>
+                <h3>+ FOLDER</h3>
+              </Link>
             </div>
-            <div className={styles.footer}>
+
+            {/* <div className={styles.footer}>
               <h4>SEARCH</h4>
               <h4>HELP</h4>
               <button className={styles.logoutBtn}>
                 <h4>LOG OUT</h4>
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </React.Fragment>

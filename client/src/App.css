@@ -14,36 +14,32 @@
 h1,
 h2,
 h3,
-h4,
-.body {
+h4 {
   font-family: "Helvetica Neue", "Helvetica", "Roboto" sans-serif;
 }
 
 h1 {
-  font-weight: 600;
+  font-weight: 700;
   font-size: 100px;
   letter-spacing: -2px;
-  margin-top: 0;
-  margin-bottom: 40px;
+  /* margin-top: 0;
+  margin-bottom: 40px; */
 }
 
 h2 {
-  font-family: "Roboto", sans-serif;
   font-weight: 700;
   font-size: 36px;
 }
 
 h3 {
-  font-family: "Roboto", sans-serif;
-  font-weight: 100;
-  font-size: 18px;
+  font-weight: 300;
+  font-size: 24px;
   text-transform: uppercase;
 }
 
 h4 {
-  font-family: "Roboto", sans-serif;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 18px;
   letter-spacing: 0.04em;
-  margin: 12px;
+  /* margin: 12px; */
 }

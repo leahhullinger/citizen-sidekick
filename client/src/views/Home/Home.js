@@ -18,7 +18,7 @@ class Home extends Component {
             href="http://localhost:3005/auth"
           >
             {" "}
-            sign up / in
+            enter
           </a>
         </div>
       </div>

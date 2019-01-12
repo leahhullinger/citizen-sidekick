@@ -25,20 +25,20 @@ class DashboardMain extends Component {
 
     return (
       <div className={styles.mainContainer}>
+        <h3>Recent Files</h3>
         <div>
           {files.map(file => {
             return (
-              <div key={file.id}>
-                <FileCard key={file.id} file={file} />
+              <div key={file.id} className={styles.fileList}>
+                <p className={styles.title}>{file.title}</p>
               </div>
             );
           })}
         </div>
-        <div>hello</div>
-        <div>
+        {/* <div>
           <h1 className={styles.mainTitle}> / dash</h1>
-        </div>
-        <div>hello</div>
+        </div> */}
+        {/* <div>hello</div> */}
       </div>
     );
   }

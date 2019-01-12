@@ -20,16 +20,50 @@
   margin: 10px 50px 20px;
   padding: 40px;
 }
-/* .link {
+.filesList {
+  margin-bottom: 100px;
+}
+.link {
   padding: 10px 0;
   font-size: 14px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Helvetica Neue", "Helvetica", "Roboto", sans-serif;
   font-weight: 400;
-  color: #ff2f50;
+  color: black;
   position: relative;
   text-transform: capitalize;
 }
 p.link {
   cursor: pointer;
   margin: 0;
-} */
+}
+
+.link:hover {
+  font-weight: 700;
+  color: blue;
+}
+
+.actionBar {
+  padding: 40px 0;
+}
+.contentInner {
+  display: flex;
+  margin-top: 20px;
+}
+
+.subhead {
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+}
+.thumb {
+  width: 200px;
+  height: 200px;
+}
+.notes {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  align-items: flex-start;
+}
