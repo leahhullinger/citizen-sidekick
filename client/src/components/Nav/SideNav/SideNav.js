@@ -47,7 +47,6 @@ class SideNav extends Component {
                 <Link to={`${match.url}/upload`}>+ UPLOAD</Link>
               </h3>
               <h3>
-                {" "}
                 <Link to={`${match.url}/new/folder`}>+ FOLDER</Link>
               </h3>
               <h3>+ NOTES</h3>

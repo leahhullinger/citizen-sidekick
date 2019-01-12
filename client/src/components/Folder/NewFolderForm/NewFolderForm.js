@@ -1,21 +1,12 @@
 import React from "react";
-import { Modal } from "react-bootstrap";
 import { Button } from "../../Button/Button";
 import styles from "./NewFolderForm.module.css";
 
-export const NewFolderForm = ({
-  isOpen,
-  handleClose,
-  onClick,
-  inputValue,
-  handleInputUpdate
-}) => {
+export const NewFolderForm = ({ onClick, inputValue, handleInputUpdate }) => {
   return (
-    <Modal show={isOpen} onHide={handleClose}>
-      <Modal.Header closeButton>
-        <Modal.Title className={styles.heading}>+ NEW FOLDER</Modal.Title>
-      </Modal.Header>
-      <Modal.Body className={styles.body}>
+    <div className={styles.container}>
+      <div className={styles.column}>
+        <h2>+ Add New Folder</h2>
         <input
           className={styles.input}
           placeholder="FOLDER NAME"
@@ -23,10 +14,11 @@ export const NewFolderForm = ({
           value={inputValue}
           onChange={handleInputUpdate}
         />
-      </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={() => onClick()}>Save ></Button>
-      </Modal.Footer>
-    </Modal>
+        <div className={styles.btnWrapper}>
+          <Button onClick={() => onClick()}>Save ></Button>
+        </div>
+      </div>
+      <div className={styles.column} />
+    </div>
   );
 };
