@@ -43,6 +43,11 @@ class Upload extends Component {
     this.setState({ uploads: updatedUploads });
   };
 
+  onCancelUploadFile = fileName => {
+    const updated = this.state.uploads.filter(f => f.filename !== fileName);
+    this.setState({ uploads: updated });
+  };
+
   onTranscript = file => {
     console.log("file being passed", file);
     axios
@@ -111,6 +116,7 @@ class Upload extends Component {
     const fileCount = this.state.uploads.filter(item => !item.isSubmitted)
       .length;
     const submittedFiles = uploads.filter(file => file.isSubmitted);
+    console.log(this.state.uploads);
     return (
       <div className={styles.uploadContainer}>
         <div className={styles.uploadWrapper}>
@@ -125,6 +131,7 @@ class Upload extends Component {
                   onUpdateUpload={this.onUpdateUpload}
                   onTranscript={this.onTranscript}
                   onSubmitClick={this.onSubmitClick}
+                  onCancel={this.onCancelUploadFile}
                 />
               )
             );

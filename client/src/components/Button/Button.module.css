@@ -1,6 +1,5 @@
 .simpleBtn {
   min-height: 24px;
-  min-width: 100%;
   background: none;
   border-radius: 2px;
   font-family: "Helvetica Neue", sans-serif;
@@ -12,6 +11,10 @@
 
 .simpleBtn:hover {
   background-color: transparent;
+  font-weight: 700;
+}
+
+.simpleBtn.isActive {
   font-weight: 700;
 }
 
