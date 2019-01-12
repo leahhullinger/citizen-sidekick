@@ -7,6 +7,7 @@ import { NewFolderForm } from "../../../components/Folder/NewFolderForm/NewFolde
 import Folder from "../../Folder/Folder";
 import Upload from "../../Upload/Upload";
 import SideNav from "../../../components/Nav/SideNav/SideNav";
+import DashboardMain from "../DashboardMain/DashboardMain";
 
 import styles from "./DashRouter.module.css";
 import {
@@ -18,15 +19,6 @@ import {
   axiosGetAllFiles,
   axiosGetAllFolders
 } from "../../../ducks/actions";
-
-const DashboardMain = (folders, files) => (
-  <div className={styles.mainContainer}>
-    <div>Render Recent File Links Here</div>
-    <div>expanded view of one file</div>
-    <div>hello</div>
-    <div>hello</div>
-  </div>
-);
 
 class DashRouter extends Component {
   componentDidMount() {

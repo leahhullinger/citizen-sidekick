@@ -111,7 +111,6 @@ class Upload extends Component {
     const fileCount = this.state.uploads.filter(item => !item.isSubmitted)
       .length;
     const submittedFiles = uploads.filter(file => file.isSubmitted);
-    console.log(uploads);
     return (
       <div className={styles.uploadContainer}>
         <div className={styles.uploadWrapper}>
