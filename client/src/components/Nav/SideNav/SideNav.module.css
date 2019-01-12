@@ -189,6 +189,11 @@
   }
 }
 
+button h4 {
+  background-color: transparent;
+  border: none;
+}
+
 /* @media screen and (max-height: 450px) {
   .sideNav {
     padding-top: 15px;

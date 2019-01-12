@@ -18,9 +18,9 @@ export const Button = ({ children, btnText, onClick }) => {
   );
 };
 
-export const IconButton = ({ icon, btnText, onClick }) => (
+export const IconButton = ({ type, size, btnText, onClick }) => (
   <button className={styles.iconBtn} onClick={onClick}>
-    <Icon type={icon} />
+    <Icon type={type} size={size} />
     {btnText}
   </button>
 );

@@ -1,21 +1,32 @@
 import React from "react";
-import { Card } from "../../Card/Card";
-import { Input } from "../../Form/Input/Input";
+import { Modal } from "react-bootstrap";
 import { Button } from "../../Button/Button";
 import styles from "./NewFolderForm.module.css";
 
-export const NewFolderForm = ({ label, inputValue, handleInputUpdate }) => {
+export const NewFolderForm = ({
+  isOpen,
+  handleClose,
+  onClick,
+  inputValue,
+  handleInputUpdate
+}) => {
   return (
-    <div>
-      <Card>
+    <Modal show={isOpen} onHide={handleClose}>
+      <Modal.Header closeButton>
+        <Modal.Title className={styles.heading}>+ NEW FOLDER</Modal.Title>
+      </Modal.Header>
+      <Modal.Body className={styles.body}>
         <input
           className={styles.input}
-          label={label}
+          placeholder="FOLDER NAME"
           name="folderName"
           value={inputValue}
           onChange={handleInputUpdate}
         />
-      </Card>
-    </div>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={() => onClick()}>Save ></Button>
+      </Modal.Footer>
+    </Modal>
   );
 };

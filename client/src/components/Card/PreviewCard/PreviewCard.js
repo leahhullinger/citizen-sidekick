@@ -5,6 +5,7 @@ import { Thumbnail } from "../../Thumbnail/Thumbnail";
 import { SimpleButton } from "../../Button/Button";
 import { TextDetect } from "../../TextDetect/TextDetect";
 import { Form } from "../../Form/Form";
+import { Card } from "../Card";
 import styles from "./PreviewCard.module.css";
 
 class PreviewCard extends Component {
@@ -40,9 +41,9 @@ class PreviewCard extends Component {
     } = this.props;
     console.log(this.state.notes);
     return (
-      <div className={styles.card}>
+      <Card>
         <div className={styles.imgWrapper}>
-          <img
+          <Thumbnail
             className={styles.thumbnail}
             src={file.s3_url}
             alt="upload preview"
@@ -104,7 +105,7 @@ class PreviewCard extends Component {
           }}
         />
         {/* </Thumbnail> */}
-      </div>
+      </Card>
     );
   }
 }

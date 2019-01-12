@@ -6,7 +6,7 @@ export const Card = ({ children, onClick }) => {
   return (
     <div className={styles.card}>
       <div className={styles.topNav}>
-        <IconButton icon="close-skinny" onClick={onClick} />
+        <IconButton type="close-box" size="30" onClick={onClick} />
       </div>
       <div className={styles.body}>{children}</div>
     </div>

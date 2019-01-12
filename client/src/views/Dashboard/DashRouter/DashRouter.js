@@ -85,15 +85,7 @@ class DashRouter extends Component {
                 <Upload folders={folders} dispatchAddFile={dispatchAddUpload} />
               )}
             />
-            <Route
-              path="/user/folder/new"
-              render={({ match }) => (
-                <NewFolderForm
-                  folders={folders}
-                  dispatchAddFile={dispatchAddUpload}
-                />
-              )}
-            />
+            <Route path={`${match.url}/new/folder`} component={NewFolderForm} />
           </Switch>
         </div>
       </div>

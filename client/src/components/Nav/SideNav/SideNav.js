@@ -48,7 +48,7 @@ class SideNav extends Component {
               </h3>
               <h3>
                 {" "}
-                <Link to={`${match.url}/folder/new`}>+ FOLDER</Link>
+                <Link to={`${match.url}/new/folder`}>+ FOLDER</Link>
               </h3>
               <h3>+ NOTES</h3>
               <br />
@@ -69,7 +69,9 @@ class SideNav extends Component {
             <div className={styles.footer}>
               <h4>SEARCH</h4>
               <h4>HELP</h4>
-              <h4>LOG OUT</h4>
+              <button className={styles.logoutBtn}>
+                <h4>LOG OUT</h4>
+              </button>
             </div>
           </div>
         </div>
