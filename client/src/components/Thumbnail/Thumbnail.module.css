@@ -1,11 +1,14 @@
-.thumbnail {
-  width: 150px;
-  border: 1px solid #091e42;
-  border-radius: 4px;
-  padding: 5px;
-  margin: 0 auto;
+.thumbWrapper {
+  height: 300px;
+  max-width: 300px;
+  overflow: hidden;
+  padding-bottom: 20px;
 }
 
-/* .thumbnail:hover {
-  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
-} */
+.thumbnail {
+  max-height: 100%;
+  width: auto;
+  text-align: center;
+  border: 1px solid #e5e5e5;
+  margin: 0 auto;
+}

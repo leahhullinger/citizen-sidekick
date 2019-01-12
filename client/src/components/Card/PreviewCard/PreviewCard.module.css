@@ -1,11 +1,11 @@
-.card {
+/* .card {
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 300px;
   margin: 15px;
   background-color: black;
-}
+} */
 .imgWrapper {
   height: 70%;
   width: auto;
@@ -21,16 +21,21 @@
 
 .actions {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  background-color: black;
-  padding: 20px;
+  /* background-color: black; */
+  padding: 10px 0px;
+  align-items: stretch;
+  border-top: 1px solid black;
 }
-
+.cardBtn {
+  border: none;
+}
 .actions button {
   flex: 1;
   border-radius: 2px;
   margin: 2px;
-  padding: 5px;
+  padding: 7px;
   background-color: white;
 }
 

@@ -42,13 +42,11 @@ class PreviewCard extends Component {
     console.log(this.state.notes);
     return (
       <Card>
-        <div className={styles.imgWrapper}>
-          <Thumbnail
-            className={styles.thumbnail}
-            src={file.s3_url}
-            alt="upload preview"
-          />
-        </div>
+        <Thumbnail
+          // className={styles.thumbnail}
+          src={file.s3_url}
+          alt="upload preview"
+        />
         <div className={styles.actions}>
           <SimpleButton
             btnText="ADD NOTES"
