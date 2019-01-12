@@ -1,23 +1,25 @@
 .uploadContainer {
-  margin: 0 40px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .uploadWrapper {
-  display: flex;
-  padding: 15px;
-  min-height: 300px;
+  min-height: 500px;
+  height: auto;
+  display: grid;
+  grid-template-columns: auto;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  margin: 50px;
+  padding: 25px;
   background-color: #f8f8f8;
-  height: 66vh;
-  display: flex;
-  justify-content: space-between;
-  margin: 20px 50px;
-  padding: 40px;
 }
 
 .footer {
   display: flex;
   justify-content: flex-end;
-  padding: 10px 50px;
+  padding: 50px;
 }
 
 .selectHeader button {
@@ -25,14 +27,11 @@
 }
 
 .previewCardPlaceholder {
-  max-width: 30%;
-  width: 30%;
-  margin: 15px;
-  padding: 2px;
-  margin-bottom: 35px;
+  margin: 0 auto;
   border: 1px solid #ddd;
   border-radius: 4px;
   transition: border 0.2s ease-in-out;
+  width: 300px;
 }
 
 .hidden,
@@ -52,4 +51,16 @@
 
 .savedItem {
   text-align: left;
+}
+
+@media (min-width: 1000px) {
+  .uploadWrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1400px) {
+  .uploadWrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

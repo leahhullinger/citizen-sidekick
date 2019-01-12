@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Thumbnail, Modal } from "react-bootstrap";
+import { Card } from "../Card/Card";
 // import { Modal } from "mx-react-components";
 import { Button } from "../Button/Button";
 import { TextArea } from "../Form/TextArea/TextArea";
@@ -15,7 +16,7 @@ export const TextDetect = ({
   onClose
 }) => {
   return (
-    <Modal show={isOpen} onHide={onClose}>
+    <Modal show={isOpen} onHide={onClose} className={styles.container}>
       <Modal.Header closeButton>Image Transcription</Modal.Header>
       <Modal.Body className={styles.body}>
         <Thumbnail src={file.s3_url} className={styles.thumb} />

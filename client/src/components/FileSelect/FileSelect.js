@@ -53,16 +53,15 @@ class FileSelect extends Component {
 
   render() {
     const isDropZoneClass = this.props.isDropZone ? styles.dropZone : "";
-    const classes = [styles.uploadArea, isDropZoneClass].join(" ");
     return (
       <Dropzone
-        className={classes}
+        className={styles.uploadArea}
         onDrop={this.onDrop}
         onFileDialogCancel={this.onCancel}
         disabled={this.props.disabled || false}
       >
         {({ getRootProps, getInputProps }) => (
-          <div {...getRootProps()}>
+          <div {...getRootProps()} className={isDropZoneClass}>
             {this.props.isDropZone ? "UPLOAD FILE" : "ADD ANOTHER FILE"}
             <input {...getInputProps()} />
           </div>
