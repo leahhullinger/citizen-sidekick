@@ -9,15 +9,13 @@ export default class FileCard extends Component {
   }
   render() {
     const { date, title, notes, text, s3_url } = this.props.file;
-    console.log(this.props);
     return (
       <div className={styles.card}>
-        <span />
         <div className={styles.contentBox}>
           <h3 className={styles.title}>{title}</h3>
           <p>{s3_url}</p>
           <div className={styles.contentBox}>
-            {/* <p className={date}>{date}</p> */}
+            <p className={date}>{date}</p>
             <span className={styles.wrapper}>
               <h4>Notes</h4>
               <p>{notes}</p>

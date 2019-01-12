@@ -1,0 +1,41 @@
+.card {
+  display: flex;
+  overflow-y: scroll;
+}
+
+.img {
+  width: 75px;
+  padding: 5px;
+  object-fit: scale-down;
+}
+
+.contentBox {
+  height: 100px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  border-bottom: 1px solid #e6e6e6;
+  padding-right: 7px;
+}
+
+.title {
+  display: table-cell;
+  vertical-align: baseline;
+  font-family: "Anton", sans-serif;
+  font-size: 24px;
+  text-transform: capitalize;
+  letter-spacing: 0.1rem;
+  text-align: left;
+}
+.wrapper {
+  border-bottom: 1px solid #e6e6e6;
+}
+h4 {
+  font-family: "VT323", sans-serif;
+  color: #ff2f50;
+}
+
+p {
+  text-align: left;
+}

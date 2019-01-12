@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Alert } from "react-bootstrap";
 
 import { Thumbnail } from "../../Thumbnail/Thumbnail";
 import { SimpleButton } from "../../Button/Button";
@@ -37,11 +36,11 @@ class PreviewCard extends Component {
       onSubmitClick,
       onTranscript,
       onUpdateUpload,
-      folders
+      folders,
+      onCancel
     } = this.props;
-    console.log(this.state.notes);
     return (
-      <Card>
+      <Card onClick={() => onCancel(file.filename)}>
         <Thumbnail
           // className={styles.thumbnail}
           src={file.s3_url}
@@ -51,6 +50,7 @@ class PreviewCard extends Component {
           <SimpleButton
             btnText="ADD NOTES"
             onClick={() => this.setState({ isFormOpen: !isFormOpen })}
+            isActive={isFormOpen}
           />
           <SimpleButton
             btnText="TRANSCRIBE"
@@ -60,24 +60,15 @@ class PreviewCard extends Component {
                 isTranscribeOpen: !isTranscribeOpen
               });
             }}
+            isActive={isTranscribeOpen}
           />
           <SimpleButton
             btnText="SAVE"
-            onClick={() => {
-              if (notes.folder_id === 0) {
-                this.setState({ isFormOpen: true });
-              }
-              if (notes.folder_id !== 0) {
-                onSubmitClick(file.filename);
-              }
-            }}
+            onClick={() => onSubmitClick(file.filename)}
           />
         </div>
         {isFormOpen && (
           <div className={styles.formWrapper}>
-            {notes.folder_id === 0 && (
-              <Alert bsStyle="warning">A folder must be selected</Alert>
-            )}
             <Form
               notes={notes}
               onUpdateInput={this.onUpdateInput}

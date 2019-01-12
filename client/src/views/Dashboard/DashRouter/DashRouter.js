@@ -3,11 +3,12 @@ import { connect } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 
 // import DashboardMain from "../DashboardMain/DashboardMain";
-import { NewFolderForm } from "../../../components/Folder/NewFolderForm/NewFolderForm";
+import NewFolder from "../../../components/Folder/NewFolder";
 import Folder from "../../Folder/Folder";
 import Upload from "../../Upload/Upload";
 import SideNav from "../../../components/Nav/SideNav/SideNav";
 import DashboardMain from "../DashboardMain/DashboardMain";
+import { axiosDeleteFolder, axiosAddFolder } from "../../../ducks/actions";
 
 import styles from "./DashRouter.module.css";
 import {
@@ -29,35 +30,35 @@ class DashRouter extends Component {
       this.props.dispatchSetFilesState(response.data);
     });
   }
+
+  onAddFolderClick = folderName => {
+    axiosAddFolder(folderName)
+      .then(response => {
+        this.props.dispatchAddFolderToState(response.data.folder);
+      })
+      .catch(err => console.log(err));
+  };
+
+  onDeleteFolder = id => {
+    console.log(id);
+    axiosDeleteFolder(id).then(response => {
+      console.log(response);
+      this.props.dispatchDeleteFolder(id);
+    });
+  };
+
   render() {
-    const {
-      folders,
-      files,
-      dispatchAddFolderToState,
-      dispatchDeleteFolder,
-      dispatchAddUpload,
-      match
-    } = this.props;
+    const { folders, files, dispatchAddUpload, match } = this.props;
     return (
       <div className={styles.container}>
-        <SideNav
-          folders={folders}
-          match={match}
-          dispatchAddFolderToState={dispatchAddFolderToState}
-        />
+        <SideNav folders={folders} match={match} />
         <div className={styles.body}>
           <Switch>
             <Route
               exact
               path="/user"
               render={() => (
-                <DashboardMain
-                  folders={folders}
-                  files={files}
-                  dispatchAddFolderToState={dispatchAddFolderToState}
-                  dispatchDeleteFolder={dispatchDeleteFolder}
-                  match={match}
-                />
+                <DashboardMain folders={folders} files={files} match={match} />
               )}
             />
             <Route
@@ -66,7 +67,7 @@ class DashRouter extends Component {
                 <Folder
                   folders={folders}
                   files={files}
-                  dispatchDeleteFolder={dispatchDeleteFolder}
+                  dispatchDeleteFolder={this.onDeleteFolder}
                   match={match}
                 />
               )}
@@ -77,7 +78,12 @@ class DashRouter extends Component {
                 <Upload folders={folders} dispatchAddFile={dispatchAddUpload} />
               )}
             />
-            <Route path={`${match.url}/new/folder`} component={NewFolderForm} />
+            <Route
+              path={`${match.url}/new/folder`}
+              render={() => (
+                <NewFolder onAddFolderClick={this.onAddFolderClick} />
+              )}
+            />
           </Switch>
         </div>
       </div>

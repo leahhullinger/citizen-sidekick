@@ -2,6 +2,8 @@ import React, { Component } from "react";
 // import FileCard from "../../components/Card/FileCard/FileCard";
 import { Link } from "react-router-dom";
 import { Button } from "../../components/Button/Button";
+
+// import { axiosUpdateFile } from "../../ducks/actions";
 import styles from "./Folder.module.css";
 
 class Folder extends Component {
@@ -9,9 +11,38 @@ class Folder extends Component {
     super(props);
 
     this.state = {
-      activeFile: ""
+      activeFile: "",
+      isEditId: "",
+      notes: {
+        title: "",
+        date: "",
+        notes: "",
+        transcript: ""
+      }
     };
   }
+
+  onInitiateEdit = file =>
+    this.setState({
+      isEditId: file.id,
+      notes: {
+        title: file.title,
+        date: file.date,
+        notes: file.notes,
+        transcript: file.transcript
+      }
+    });
+
+  // onUpdateFile = id => {
+  //   axiosUpdateFile(id, this.state.notes)
+  //     .then(res => console.log(res))
+  //     .catch(err => console.log(err));
+  // };
+
+  handleInputUpdate = e =>
+    this.setState({
+      notes: { ...this.state.notes, [e.target.name]: e.target.value }
+    });
 
   render() {
     const { folders, match, files } = this.props;

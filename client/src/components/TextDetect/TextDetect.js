@@ -1,12 +1,13 @@
-import React, { Component } from "react";
-import { Thumbnail, Modal } from "react-bootstrap";
+import React from "react";
+import { Modal } from "react-bootstrap";
 import { Card } from "../Card/Card";
 // import { Modal } from "mx-react-components";
-import { Button } from "../Button/Button";
+import { SimpleButton } from "../Button/Button";
+import { Thumbnail } from "../Thumbnail/Thumbnail";
 import { TextArea } from "../Form/TextArea/TextArea";
 import { Loading } from "../Loading/Loading";
+
 // this is the modal that pops up when tr
-// need help connecting image to user_id
 import styles from "./TextDetect.module.css";
 
 export const TextDetect = ({
@@ -17,11 +18,16 @@ export const TextDetect = ({
 }) => {
   return (
     <Modal show={isOpen} onHide={onClose} className={styles.container}>
-      <Modal.Header closeButton>Image Transcription</Modal.Header>
-      <Modal.Body className={styles.body}>
-        <Thumbnail src={file.s3_url} className={styles.thumb} />
+      <div className={styles.header}>
+        <h4>Transcribe</h4>
+      </div>
+      <div className={styles.body}>
+        <div className={styles.imgWrapper}>
+          <img className={styles.img} src={file.s3_url} />
+        </div>
         {!!file.transcript && (
           <TextArea
+            className={styles.textResults}
             placeholder="Transription"
             value={file.transcript}
             name="transcription"
@@ -35,17 +41,16 @@ export const TextDetect = ({
           />
         )}
         {!file.transcript && <Loading />}
-      </Modal.Body>
-      <Modal.Footer>
-        <Button
-          simpleBtn={true}
+      </div>
+      <div className={styles.footer}>
+        <SimpleButton
           onClick={() => {
             onClose();
           }}
         >
           Save
-        </Button>
-      </Modal.Footer>
+        </SimpleButton>
+      </div>
     </Modal>
   );
 };

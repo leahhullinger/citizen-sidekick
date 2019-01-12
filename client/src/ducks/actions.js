@@ -57,6 +57,7 @@ export function updateFolderComplete(id, update) {
 }
 
 export function addFileComplete(file) {
+  console.log("redux addFileComplete:", file);
   return {
     type: ADD_FILE_COMPLETE,
     payload: file
@@ -111,6 +112,6 @@ export function axiosGetAllFiles() {
 }
 
 export function axiosAddFile(upload) {
-  console.log(upload);
+  console.log("this is axiosAddFile:", upload);
   return axios.post(`${API_URL}/add/file`, { ...upload });
 }

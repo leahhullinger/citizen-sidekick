@@ -1,7 +1,6 @@
 module.exports = {
   newFile: (req, res, next) => {
     const dbInstance = req.app.get("db");
-    const { id } = req.params;
     const {
       title,
       date,
@@ -21,7 +20,8 @@ module.exports = {
         filetype,
         s3_url,
         transcript,
-        folder_id
+        folder_id,
+        4
 
         //req.user.id
       )

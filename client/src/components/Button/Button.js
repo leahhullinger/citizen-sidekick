@@ -2,12 +2,17 @@ import React from "react";
 import { Icon } from "mx-react-components";
 import styles from "./Button.module.css";
 
-export const SimpleButton = ({ children, btnText, onClick }) => (
-  <button className={styles.simpleBtn} onClick={onClick}>
-    {btnText}
-    {children}
-  </button>
-);
+export const SimpleButton = ({ children, btnText, onClick, isActive }) => {
+  const classes = [styles.simpleBtn, isActive ? styles.isActive : null].join(
+    " "
+  );
+  return (
+    <button className={classes} onClick={onClick}>
+      {btnText}
+      {children}
+    </button>
+  );
+};
 
 export const Button = ({ children, btnText, onClick }) => {
   return (
