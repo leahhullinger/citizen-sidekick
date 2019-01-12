@@ -25,8 +25,9 @@ class DashboardMain extends Component {
 
     return (
       <div className={styles.mainContainer}>
-        <h3>Recent Files</h3>
         <div>
+          <h4>Recent Files</h4>
+
           {files.map(file => {
             return (
               <div key={file.id} className={styles.fileList}>
@@ -35,6 +36,13 @@ class DashboardMain extends Component {
             );
           })}
         </div>
+        <div className={styles.view}>
+          <h4>VIEW 2</h4>
+        </div>
+        <div className={styles.view}>
+          <h4>VIEW </h4>
+        </div>
+
         {/* <div>
           <h1 className={styles.mainTitle}> / dash</h1>
         </div> */}

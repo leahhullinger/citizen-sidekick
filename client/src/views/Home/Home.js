@@ -9,6 +9,15 @@ class Home extends Component {
   render() {
     return (
       <div className={styles.container}>
+        <a
+          className={styles.link}
+          alt="Enter Citizen Sidekick"
+          href="http://localhost:3005/auth"
+        >
+          {" "}
+          Sign In / Sign Up
+        </a>
+
         <div className={styles.bgImg} />
         <div className={styles.content}>
           <h1 className={styles.title}>CITIZEN SIDEKICK</h1>
@@ -18,7 +27,7 @@ class Home extends Component {
             href="http://localhost:3005/auth"
           >
             {" "}
-            enter
+            Sign In / Sign Up
           </a>
         </div>
       </div>

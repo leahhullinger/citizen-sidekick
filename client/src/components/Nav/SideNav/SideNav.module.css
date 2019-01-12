@@ -150,7 +150,8 @@
 }
 
 .section a:hover {
-  color: #f1f1f1;
+  color: #ae7520;
+  font-weight: 700;
 }
 
 @media (min-width: 500px) {
@@ -183,6 +184,7 @@
   .logo {
     padding-right: 25px;
     text-align: right;
+    text-transform: uppercase;
   }
   .content {
     padding-top: 0;

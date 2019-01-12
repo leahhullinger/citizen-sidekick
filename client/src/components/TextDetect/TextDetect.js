@@ -2,7 +2,7 @@ import React from "react";
 import { Modal } from "react-bootstrap";
 import { Card } from "../Card/Card";
 // import { Modal } from "mx-react-components";
-import { SimpleButton } from "../Button/Button";
+import { Button, SimpleButton } from "../Button/Button";
 import { Thumbnail } from "../Thumbnail/Thumbnail";
 import { TextArea } from "../Form/TextArea/TextArea";
 import { Loading } from "../Loading/Loading";
@@ -19,7 +19,8 @@ export const TextDetect = ({
   return (
     <Modal show={isOpen} onHide={onClose} className={styles.container}>
       <div className={styles.header}>
-        <h4>Transcribe</h4>
+        <h2 className={styles.light}>cs</h2>
+        <h2>/ transcribe</h2>
       </div>
       <div className={styles.body}>
         <div className={styles.imgWrapper}>
@@ -43,13 +44,13 @@ export const TextDetect = ({
         {!file.transcript && <Loading />}
       </div>
       <div className={styles.footer}>
-        <SimpleButton
+        <Button
           onClick={() => {
             onClose();
           }}
         >
           Save
-        </SimpleButton>
+        </Button>
       </div>
     </Modal>
   );

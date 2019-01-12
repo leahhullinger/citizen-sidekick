@@ -29,4 +29,11 @@
   align-content: center;
   cursor: pointer;
   width: 300px;
+  font-size: 60px;
+  font-weight: 700;
+  color: black;
+}
+.dropZone:hover {
+  -webkit-text-stroke: 1px black;
+  color: transparent;
 }

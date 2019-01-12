@@ -37,6 +37,10 @@ h3 {
   text-transform: uppercase;
 }
 
+h3:hover {
+  font-weight: 700;
+}
+
 h4 {
   font-weight: 700;
   font-size: 18px;
