@@ -1,19 +1,19 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 // redux
-import { axiosAddFile } from "../../ducks/actions";
-import { API_URL } from "../../ducks/constants";
+import { axiosAddFile } from '../../state/actions';
+import { API_URL } from '../../state/constants';
 // components
-import FileSelect from "../../components/FileSelect/FileSelect";
-import PreviewCard from "../../components/Card/PreviewCard/PreviewCard";
-import { Loading } from "../../components/Loading/Loading";
-import { Button } from "../../components/Button/Button";
-import { TextArea } from "../../components/Form/TextArea/TextArea";
-import { Icon } from "mx-react-components";
+import FileSelect from '../../components/FileSelect/FileSelect';
+import PreviewCard from '../../components/Card/PreviewCard/PreviewCard';
+import { Loading } from '../../components/Loading/Loading';
+import { Button } from '../../components/Button/Button';
+import { TextArea } from '../../components/Form/TextArea/TextArea';
+import { Icon } from 'mx-react-components';
 // css
-import styles from "./Upload.module.css";
+import styles from './Upload.module.css';
 
 // template form for newUploadForm, newUserForm
 // redux
@@ -49,7 +49,7 @@ class Upload extends Component {
   };
 
   onTranscript = file => {
-    console.log("file being passed", file);
+    console.log('file being passed', file);
     axios
       .post(`${API_URL}/textDetect`, { file })
       .then(response => {
@@ -61,7 +61,7 @@ class Upload extends Component {
 
   onAudioTranscribe = (file, url) => {
     axios
-      .post("http://localhost:3005/api/aws/transcribe", {
+      .post('http://localhost:3005/api/aws/transcribe', {
         filename: this.state.file.name,
         filetype: this.state.file.type,
         s3_url: this.state.s3_url
@@ -72,7 +72,7 @@ class Upload extends Component {
   };
   // s3 function passed to s3 upload function in fileSelect
   setFileUrl = (url, file) => {
-    var newUrl = url.substring(0, url.indexOf("?"));
+    var newUrl = url.substring(0, url.indexOf('?'));
     console.log(file);
     this.setState({
       loading: false,
@@ -92,13 +92,13 @@ class Upload extends Component {
   onSubmitClick = filename => {
     const file = this.state.uploads.find(file => file.filename === filename);
     const uploadFile = {
-      title: file.notes ? file.notes.title : "",
-      date: file.notes ? file.notes.date : "",
-      notes: file.notes ? file.notes.text : "",
+      title: file.notes ? file.notes.title : '',
+      date: file.notes ? file.notes.date : '',
+      notes: file.notes ? file.notes.text : '',
       filename: file.filename,
       filetype: file.filetype,
       s3_url: file.s3_url,
-      transcript: file.transcript || "",
+      transcript: file.transcript || '',
       folder_id: Number(file.notes.folder_id)
     };
     console.log(uploadFile);
@@ -154,7 +154,7 @@ class Upload extends Component {
           </div>
         </div>
         <div className={styles.footer}>
-          <Link to="/user">
+          <Link to="/dashboard">
             <Button btnText="Back" />
           </Link>
         </div>

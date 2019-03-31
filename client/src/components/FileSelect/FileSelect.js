@@ -4,10 +4,10 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import Dropzone from "react-dropzone";
-import { API_URL } from "../../ducks/constants";
+import { API_URL } from "../../state/constants";
 import styles from "./FileSelect.module.css";
 
-import { updateSelectedFiles } from "../../ducks/actions";
+import { updateSelectedFiles } from "../../state/actions";
 
 class FileSelect extends Component {
   constructor(props) {

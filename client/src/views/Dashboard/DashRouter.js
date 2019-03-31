@@ -1,16 +1,15 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
 
-// import DashboardMain from "../DashboardMain/DashboardMain";
-import NewFolder from "../../../components/Folder/NewFolder";
-import Folder from "../../Folder/Folder";
-import Upload from "../../Upload/Upload";
-import SideNav from "../../../components/Nav/SideNav/SideNav";
-import DashboardMain from "../DashboardMain/DashboardMain";
-import { axiosDeleteFolder, axiosAddFolder } from "../../../ducks/actions";
+import NewFolder from '../../components/Folder/NewFolder';
+import Folder from '../Folder/Folder';
+import Upload from '../Upload/Upload';
+import SideNav from '../../components/Nav/SideNav/SideNav';
+import { DashboardMain } from './DashboardMain';
+import { axiosDeleteFolder, axiosAddFolder } from '../../state/actions';
 
-import styles from "./DashRouter.module.css";
+import styles from './DashRouter.module.css';
 import {
   getFoldersComplete,
   getFilesComplete,
@@ -19,7 +18,7 @@ import {
   deleteFolderComplete,
   axiosGetAllFiles,
   axiosGetAllFolders
-} from "../../../ducks/actions";
+} from '../../state/actions';
 
 class DashRouter extends Component {
   componentDidMount() {
@@ -51,12 +50,16 @@ class DashRouter extends Component {
     const { folders, files, dispatchAddUpload, match } = this.props;
     return (
       <div className={styles.container}>
-        <SideNav folders={folders} match={match} />
+        <SideNav
+          folders={folders}
+          match={match}
+          onAddFolderClick={this.onAddFolderClick}
+        />
         <div className={styles.body}>
           <Switch>
             <Route
               exact
-              path="/user"
+              path="/dashboard"
               render={() => (
                 <DashboardMain folders={folders} files={files} match={match} />
               )}
@@ -73,7 +76,7 @@ class DashRouter extends Component {
               )}
             />
             <Route
-              path="/user/upload"
+              path={`${match.url}/upload`}
               render={({ match }) => (
                 <Upload folders={folders} dispatchAddFile={dispatchAddUpload} />
               )}

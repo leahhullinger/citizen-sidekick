@@ -1,24 +1,24 @@
-import React, { Component } from "react";
-import FileCard from "../../components/Card/FileCard/FileCard";
-import { Thumbnail } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { Button } from "../../components/Button/Button";
-import { axiosDeleteFile, axiosUpdateFile } from "../../ducks/actions";
+import React, { Component } from 'react';
+import FileCard from '../../components/Card/FileCard/FileCard';
+import { Thumbnail } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Button } from '../../components/Button/Button';
+import { axiosDeleteFile, axiosUpdateFile } from '../../state/actions';
 // import { EditFileForm } from "./file-edit";
-import styles from "./Folder.module.css";
+import styles from './Folder.module.css';
 
 class Folder extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      activeFile: "",
-      isEditId: "",
+      activeFile: '',
+      isEditId: '',
       notes: {
-        title: "",
-        date: "",
-        notes: "",
-        transcript: ""
+        title: '',
+        date: '',
+        notes: '',
+        transcript: ''
       }
     };
   }
@@ -116,7 +116,7 @@ class Folder extends Component {
             </div>
           </div>
           <div className={styles.footer}>
-            <Link to="/user">
+            <Link to="/dashboard">
               <Button>Back</Button>
             </Link>
           </div>
