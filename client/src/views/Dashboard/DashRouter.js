@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import NewFolder from '../../components/Folder/NewFolder';
 import Folder from '../Folder/Folder';
-import Upload from '../Upload/Upload';
+import Upload from '../upload/Upload';
 import SideNav from '../../components/Nav/SideNav/SideNav';
 import { DashboardMain } from './DashboardMain';
 import { axiosDeleteFolder, axiosAddFolder } from '../../state/actions';

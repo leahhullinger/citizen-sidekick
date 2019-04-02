@@ -8,15 +8,24 @@ import { API_URL } from '../../state/constants';
 // components
 import FileSelect from '../../components/FileSelect/FileSelect';
 import PreviewCard from '../../components/Card/PreviewCard/PreviewCard';
+import { UploadPreview } from './upload-preview';
 import { Loading } from '../../components/Loading/Loading';
 import { Button } from '../../components/Button/Button';
 import { TextArea } from '../../components/Form/TextArea/TextArea';
 import { Icon } from 'mx-react-components';
 // css
-import styles from './Upload.module.css';
+import styles from './upload.module.css';
 
 // template form for newUploadForm, newUserForm
 // redux
+
+const mockUpload = {
+  s3_url:
+    'https://jonbrown.org/assets/images/blog/2017/bluegreen/textmessage_image_1.jpg',
+  filename: 'textmessage',
+  filetype: '.jpg',
+  isSubmitted: false
+};
 
 class Upload extends Component {
   constructor(props) {
@@ -28,7 +37,7 @@ class Upload extends Component {
     };
   }
   componentDidMount() {
-    this.setState({ loading: false, uploads: [] });
+    this.setState({ loading: false, uploads: [mockUpload] });
   }
 
   onUpdateLoading = val => this.setState({ loading: val });
@@ -77,13 +86,13 @@ class Upload extends Component {
     this.setState({
       loading: false,
       uploads: [
-        ...this.state.uploads,
         {
           s3_url: newUrl,
           filename: file.name,
           filetype: file.type,
           isSubmitted: false
-        }
+        },
+        ...this.state.uploads
       ]
     });
   };
@@ -116,48 +125,51 @@ class Upload extends Component {
     const fileCount = this.state.uploads.filter(item => !item.isSubmitted)
       .length;
     const submittedFiles = uploads.filter(file => file.isSubmitted);
+    console.log({ uploads });
     return (
       <div className={styles.uploadContainer}>
-        <div className={styles.uploadWrapper}>
-          {!!loading && <Loading className={styles.previewCardPlaceholder} />}
-          {uploads.map((file, index) => {
-            return (
-              !file.isSubmitted && (
-                <PreviewCard
-                  key={index}
-                  file={file}
-                  folders={this.props.folders}
-                  onUpdateUpload={this.onUpdateUpload}
-                  onTranscript={this.onTranscript}
-                  onSubmitClick={this.onSubmitClick}
-                  onCancel={this.onCancelUploadFile}
-                />
-              )
-            );
-          })}
-          {(fileCount < 2 || (fileCount === 2 && !loading)) && (
-            <FileSelect
-              setFileUrl={this.setFileUrl}
-              onUpdateLoading={this.onUpdateLoading}
-              isDropZone={true}
-              onUpdateUpload={this.onUpdateUpload}
-            />
-          )}
-          <div
-            className={!submittedFiles.length ? styles.hidden : styles.saved}
-          >
-            {submittedFiles.map(file => (
-              <p className={styles.savedItem} key={file.filename}>
-                + {file.filename} saved
-              </p>
-            ))}
-          </div>
+        {!!loading && <Loading className={styles.previewCardPlaceholder} />}
+        {uploads.map((file, index) => {
+          console.log({ file });
+          return (
+            !file.isSubmitted &&
+            !!file.s3_url && (
+              <UploadPreview
+                file={file}
+                folders={[{ folder_name: 'folder1', id: '' }]}
+              />
+              // <PreviewCard
+              //   key={index}
+              //   file={file}
+              //   folders={this.props.folders}
+              //   onUpdateUpload={this.onUpdateUpload}
+              //   onTranscript={this.onTranscript}
+              //   onSubmitClick={this.onSubmitClick}
+              //   onCancel={this.onCancelUploadFile}
+              // />
+            )
+          );
+        })}
+        {(fileCount < 2 || (fileCount === 2 && !loading)) && (
+          <FileSelect
+            setFileUrl={this.setFileUrl}
+            onUpdateLoading={this.onUpdateLoading}
+            isDropZone={true}
+            onUpdateUpload={this.onUpdateUpload}
+          />
+        )}
+        <div className={!submittedFiles.length ? styles.hidden : styles.saved}>
+          {submittedFiles.map(file => (
+            <p className={styles.savedItem} key={file.filename}>
+              + {file.filename} saved
+            </p>
+          ))}
         </div>
-        <div className={styles.footer}>
+        {/* <div className={styles.footer}>
           <Link to="/dashboard">
             <Button btnText="Back" />
           </Link>
-        </div>
+        </div> */}
       </div>
     );
   }

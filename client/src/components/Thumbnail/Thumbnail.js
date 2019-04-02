@@ -1,10 +1,6 @@
-import React from "react";
-import styles from "./Thumbnail.module.css";
+import React from 'react';
+import styles from './Thumbnail.module.css';
 
-export const Thumbnail = ({ src }) => {
-  return (
-    <div className={styles.thumbWrapper}>
-      <img className={styles.thumbnail} src={src} />
-    </div>
-  );
+export const Thumbnail = ({ src, alt }) => {
+  return <img className={styles.thumbnail} src={src} alt={alt || src} />;
 };

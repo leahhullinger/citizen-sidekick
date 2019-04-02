@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import { Thumbnail } from "../../Thumbnail/Thumbnail";
-import { SimpleButton } from "../../Button/Button";
-import { TextDetect } from "../../TextDetect/TextDetect";
-import { Form } from "../../Form/Form";
-import { Card } from "../Card";
-import styles from "./PreviewCard.module.css";
+import { Thumbnail } from '../../Thumbnail/Thumbnail';
+import { SimpleButton } from '../../Button/Button';
+import { TextDetect } from '../../TextDetect/TextDetect';
+import { Form } from '../../Form/Form';
+import { Card } from '../Card';
+import styles from './PreviewCard.module.css';
 
 class PreviewCard extends Component {
   constructor(props) {
@@ -15,10 +15,10 @@ class PreviewCard extends Component {
       isFormOpen: false,
       isTranscribeOpen: false,
       notes: file.notes || {
-        title: "",
+        title: '',
         folder_id: 0,
-        date: "",
-        text: ""
+        date: '',
+        text: ''
       }
     };
   }
