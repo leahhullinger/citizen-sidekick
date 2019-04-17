@@ -1,0 +1,6 @@
+query FetchUsers($where: UserWhereInput) {
+  users(where: $where) {
+    id
+    name
+  }
+}

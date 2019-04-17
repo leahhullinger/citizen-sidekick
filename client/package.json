@@ -13,25 +13,30 @@
     "@rmwc/select": "^5.2.1",
     "@rmwc/textfield": "^5.2.1",
     "@rmwc/typography": "^5.2.1",
+    "apollo-boost": "^0.3.1",
+    "apollo-client": "^2.5.1",
     "axios": "^0.18.0",
+    "graphql": "^14.2.1",
+    "graphql-tag": "^2.10.1",
     "mx-react-components": "^6.1.3",
     "react": "^16.7.0",
+    "react-apollo": "^2.5.3",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.7.0",
     "react-dropzone": "^8.0.3",
     "react-file-download": "^0.3.5",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.2",
+    "react-scripts": "^2.1.8",
     "redux": "^4.0.1",
     "redux-promise-middleware": "^5.1.1",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
+    "dev": "react-scripts start -p 7777",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -41,6 +46,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "proxy": "http://localhost:3005"
+  ]
 }

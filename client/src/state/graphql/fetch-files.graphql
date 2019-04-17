@@ -1,0 +1,6 @@
+query FetchFiles($where: UserWhereInput) {
+  files(where: $where) {
+    id
+    name
+  }
+}

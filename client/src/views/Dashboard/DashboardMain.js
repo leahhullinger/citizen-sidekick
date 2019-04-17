@@ -1,5 +1,6 @@
-import React from "react";
-import styles from "./DashboardMain.module.css";
+import React from 'react';
+import styles from './DashboardMain.module.css';
+import User from '../../components/User';
 
 export const DashboardMain = ({ files }) => {
   // onAddFolderClick = folderName => {
@@ -22,7 +23,14 @@ export const DashboardMain = ({ files }) => {
     <div className={styles.mainContainer}>
       <div>
         <h4>Recent Files</h4>
-
+        <User>
+          {({ data: { currentUser } }) => {
+            if (!currentUser) {
+              return null;
+            }
+            return <p>{currentUser.name}</p>;
+          }}
+        </User>
         {files.map(file => {
           return (
             <div key={file.id} className={styles.fileList}>
