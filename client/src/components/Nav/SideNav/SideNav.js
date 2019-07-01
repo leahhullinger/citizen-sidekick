@@ -3,6 +3,7 @@ import styles from "./SideNav.module.css";
 import { Route, Link } from "react-router-dom";
 import { Icon } from "mx-react-components";
 import { GET_FOLDERS_COMPLETE } from "../../../ducks/constants";
+import logo from "../noun_Document_453.png";
 
 class SideNav extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class SideNav extends Component {
     const { isOpen } = this.state;
     const { folders, match } = this.props;
     return (
-      <React.Fragment>
+      <>
         <button
           className={[styles.btn, isOpen ? styles.isOpen : null].join(" ")}
           onClick={() => this.handleBtnClick()}
@@ -37,7 +38,12 @@ class SideNav extends Component {
           className={[styles.sideNav, isOpen ? styles.isOpen : null].join(" ")}
         >
           <div className={styles.content}>
-            <h2 className={styles.logo}>Citizen Sidekick</h2>
+            <div className={styles.header}>
+              <div className={styles.imgWrapper}>
+                <img src={logo} />
+              </div>
+              <h2 className={styles.logo}>Sidekick</h2>
+            </div>
             <div className={styles.section}>
               <h3>Tools</h3>
               <a href="#Upload">Transcribe</a>
@@ -76,7 +82,7 @@ class SideNav extends Component {
             </div> */}
           </div>
         </div>
-      </React.Fragment>
+      </>
     );
   }
 }

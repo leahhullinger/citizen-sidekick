@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styles from "./TopNav.module.css";
 import { Icon, Menu } from "mx-react-components";
+import logo from "../noun_Document_453.png";
 
 class TopNav extends Component {
   constructor(props) {
@@ -21,7 +22,10 @@ class TopNav extends Component {
   render() {
     return (
       <div className={styles.topNav}>
-        <h1>citizen sidekick </h1>
+        <img src={logo} />
+        <div className={styles.logoWrapper}>
+          <h1>citizen sidekick </h1>
+        </div>
         <Menu
           alignItems="right"
           isOpen={this.state.showItems}
