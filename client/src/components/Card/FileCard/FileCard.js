@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { SimpleButton } from "../../Button/Button";
+// import { PrimaryBtn } from "../../Button/PrimaryBtn";
 import styles from "./FileCard.module.css";
 import { style } from "glamor";
 
@@ -27,8 +27,8 @@ export default class FileCard extends Component {
           <p className={styles.text}>Transcript</p>
           <p>{text}</p>
           <div className={styles.actions}>
-            <SimpleButton btnText="EDIT" />
-            <SimpleButton btnText="TRANSCRIBE" />
+            {/* <SimpleButton btnText="EDIT" />
+            <SimpleButton btnText="TRANSCRIBE" /> */}
           </div>
         </div>
       </div>

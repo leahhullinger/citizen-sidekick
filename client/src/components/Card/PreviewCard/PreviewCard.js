@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import { Thumbnail } from "../../Thumbnail/Thumbnail";
-import { SimpleButton } from "../../Button/Button";
+// import { SimpleButton } from "../../Button/Button";
 import { TextDetect } from "../../TextDetect/TextDetect";
 import { Form } from "../../Form/Form";
 import { Card } from "../Card";
@@ -47,7 +47,7 @@ class PreviewCard extends Component {
           alt="upload preview"
         />
         <div className={styles.actions}>
-          <SimpleButton
+          {/* <SimpleButton
             btnText="ADD NOTES"
             onClick={() => this.setState({ isFormOpen: !isFormOpen })}
             isActive={isFormOpen}
@@ -65,7 +65,7 @@ class PreviewCard extends Component {
           <SimpleButton
             btnText="SAVE"
             onClick={() => onSubmitClick(file.filename)}
-          />
+          /> */}
         </div>
         {isFormOpen && (
           <div className={styles.formWrapper}>
@@ -74,13 +74,13 @@ class PreviewCard extends Component {
               onUpdateInput={this.onUpdateInput}
               folders={folders}
             />
-            <SimpleButton
+            {/* <SimpleButton
               btnText="Save Notes"
               onClick={() => {
                 onUpdateUpload(file.filename, { notes: this.state.notes });
                 this.setState({ isFormOpen: false });
               }}
-            />
+            /> */}
           </div>
         )}
         <TextDetect

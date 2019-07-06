@@ -2,7 +2,7 @@ import React from "react";
 import { Modal } from "react-bootstrap";
 import { Card } from "../Card/Card";
 // import { Modal } from "mx-react-components";
-import { Button, SimpleButton } from "../Button/Button";
+// import { Button, SimpleButton } from "../Button/Button";
 import { Thumbnail } from "../Thumbnail/Thumbnail";
 import { TextArea } from "../Form/TextArea/TextArea";
 import { Loading } from "../Loading/Loading";
@@ -44,13 +44,13 @@ export const TextDetect = ({
         {!file.transcript && <Loading />}
       </div>
       <div className={styles.footer}>
-        <Button
+        {/* <Button
           onClick={() => {
             onClose();
           }}
         >
           Save
-        </Button>
+        </Button> */}
       </div>
     </Modal>
   );

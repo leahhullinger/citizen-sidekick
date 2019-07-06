@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "../../Button/Button";
+import { PrimaryBtn } from "../../Button/PrimaryBtn";
 import styles from "./NewFolderForm.module.css";
 
 export const NewFolderForm = ({ onClick, inputValue, handleInputUpdate }) => {
@@ -15,7 +15,7 @@ export const NewFolderForm = ({ onClick, inputValue, handleInputUpdate }) => {
           onChange={handleInputUpdate}
         />
         <div className={styles.btnWrapper}>
-          <Button onClick={() => onClick()}>Save ></Button>
+          <PrimaryBtn btnText="Save" onClick={() => onClick()} />
         </div>
       </div>
       <div className={styles.column} />
