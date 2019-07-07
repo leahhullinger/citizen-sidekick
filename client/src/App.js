@@ -1,41 +1,52 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import Home from './views/Home/Home';
-import DashRouter from './views/Dashboard/DashRouter';
+import { connect } from 'react-redux';
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import './App.css';
-import FetchUsers from './state/graphql/fetch-users.graphql';
-import apolloClient from './config';
-import { Signup } from './components/Form/Signup';
+import { getCurrentUser } from './state/user/user-actions';
+import { signoutUser, signinUser } from './state/user/user-actions';
+import MainContainer from './views/main/main-container.js';
+import { Auth } from './common/auth/component';
+
+const AppAuthenticated = props => {
+  const { match } = props;
+  return (
+    <Switch>
+      <Route path={match.url} component={MainContainer} />
+      {/*
+       *  /dashboard
+       *  /upload
+       *  /folder/(add|:id)
+       */}
+    </Switch>
+  );
+};
+
+const stateToProps = state => ({
+  user: state.user
+});
+
+const dispatchToProps = dispatch => ({
+  getUser: () => dispatch(getCurrentUser()),
+  userSignout: () => dispatch(signoutUser()),
+  userSignin: (email, password) => dispatch(signinUser(email, password))
+});
 
 class App extends Component {
   componentDidMount() {
-    // apolloClient
-    //   .query({
-    //     query: FetchUsers,
-    //     variables: {
-    //       where: {}
-    //     }
-    //   })
-    //   .then(res => console.log('apollo', res))
-    //   .catch(e => console.log({ e }));
+    this.props.getUser();
   }
   render() {
+    const { user, userSignin } = this.props;
     return (
       <div className="App">
         <div className="body">
           <Switch>
-            {/* !isAthenticated 
-                  ? <Redirect to="/:path(login|authenticating|auth)" /> 
-                  : "/" 
-             */}
-            <Route exact path="/" component={Home} />
-            <Route path="/dashboard" component={DashRouter} />
-            <Route path="/signup" component={Signup} />
-            {/*
-             *  /dashboard
-             *  /upload
-             *  /folder/(add|:id)
-             */}
+            <Route
+              path="/(home|signin|signout)"
+              render={() => <Auth user={user} onSignin={userSignin} />}
+            />
+            {!!user && <Route exact path="/" component={AppAuthenticated} />}
+            <Redirect to="/home" />
           </Switch>
         </div>
       </div>
@@ -43,4 +54,9 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(
+  connect(
+    stateToProps,
+    dispatchToProps
+  )(App)
+);

@@ -7,8 +7,12 @@ import {
   DELETE_FOLDER_COMPLETE,
   DELETE_FILE_COMPLETE,
   UPDATE_FOLDER_COMPLETE,
-  UPDATE_FILE_COMPLETE
-} from "./constants";
+  UPDATE_FILE_COMPLETE,
+  CURRENT_USER_SET,
+  USER_SIGNIN,
+  USER_SIGNOUT,
+  USER_SIGNUP
+} from './constants';
 /** 
 type FileT = {
   id: string,
@@ -32,6 +36,16 @@ const initialState = {
 
 function reducer(state = initialState, action) {
   switch (action.type) {
+    case CURRENT_USER_SET:
+      return {
+        ...state,
+        user: action.user
+      };
+    case USER_SIGNOUT:
+      return {
+        ...state,
+        user: null
+      };
     case ADD_FOLDER_COMPLETE:
       console.log(action.payload);
       return {
