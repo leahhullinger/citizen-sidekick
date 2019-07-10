@@ -12,7 +12,7 @@ import "@material/top-app-bar/dist/mdc.top-app-bar.css";
 
 const TopNav = () => {
   return (
-    <TopAppBar fixed>
+    <TopAppBar className={styles.topNav} fixed>
       <TopAppBarRow>
         <TopAppBarSection>
           <TopAppBarTitle>Citizen Sidekick</TopAppBarTitle>
