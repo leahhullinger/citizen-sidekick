@@ -129,6 +129,29 @@
   justify-content: space-between;
 }
 
+.header {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 10px;
+  padding-left: 10px;
+}
+
+.imgWrapper {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.imgWrapper img {
+  height: 50px;
+  padding: 7px;
+}
+.logo {
+  margin: 0;
+}
+
 .section {
   flex: 1;
   padding: 50px 40px;

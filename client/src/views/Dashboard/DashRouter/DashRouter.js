@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 
 // import DashboardMain from "../DashboardMain/DashboardMain";
+import TopNav from "../../../components/Nav/TopNav/TopNav";
 import NewFolder from "../../../components/Folder/NewFolder";
 import Folder from "../../Folder/Folder";
 import Upload from "../../Upload/Upload";
@@ -51,8 +52,9 @@ class DashRouter extends Component {
     const { folders, files, dispatchAddUpload, match } = this.props;
     return (
       <div className={styles.container}>
-        <SideNav folders={folders} match={match} />
+        <TopNav />
         <div className={styles.body}>
+          <SideNav folders={folders} match={match} />
           <Switch>
             <Route
               exact

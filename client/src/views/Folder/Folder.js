@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import FileCard from "../../components/Card/FileCard/FileCard";
 import { Thumbnail } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { Button } from "../../components/Button/Button";
+import { PrimaryBtn } from "../../components/Button/PrimaryBtn";
 import { axiosDeleteFile, axiosUpdateFile } from "../../ducks/actions";
 // import { EditFileForm } from "./file-edit";
 import styles from "./Folder.module.css";
@@ -117,7 +117,7 @@ class Folder extends Component {
           </div>
           <div className={styles.footer}>
             <Link to="/user">
-              <Button>Back</Button>
+              <PrimaryBtn btnText="Back" />
             </Link>
           </div>
           {/* {fileContent && (

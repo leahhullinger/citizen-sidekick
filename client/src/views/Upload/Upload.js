@@ -9,7 +9,7 @@ import { API_URL } from "../../ducks/constants";
 import FileSelect from "../../components/FileSelect/FileSelect";
 import PreviewCard from "../../components/Card/PreviewCard/PreviewCard";
 import { Loading } from "../../components/Loading/Loading";
-import { Button } from "../../components/Button/Button";
+import { PrimaryBtn } from "../../components/Button/PrimaryBtn";
 import { TextArea } from "../../components/Form/TextArea/TextArea";
 import { Icon } from "mx-react-components";
 // css
@@ -155,7 +155,7 @@ class Upload extends Component {
         </div>
         <div className={styles.footer}>
           <Link to="/user">
-            <Button btnText="Back" />
+            <PrimaryBtn btnText="Back" />
           </Link>
         </div>
       </div>
