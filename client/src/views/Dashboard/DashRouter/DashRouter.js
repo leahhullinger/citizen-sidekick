@@ -55,38 +55,47 @@ class DashRouter extends Component {
         <TopNav />
         <div className={styles.body}>
           <SideNav folders={folders} match={match} />
-          <Switch>
-            <Route
-              exact
-              path="/user"
-              render={() => (
-                <DashboardMain folders={folders} files={files} match={match} />
-              )}
-            />
-            <Route
-              path={`${match.url}/folder/:id`}
-              render={({ match }) => (
-                <Folder
-                  folders={folders}
-                  files={files}
-                  dispatchDeleteFolder={this.onDeleteFolder}
-                  match={match}
-                />
-              )}
-            />
-            <Route
-              path="/user/upload"
-              render={({ match }) => (
-                <Upload folders={folders} dispatchAddFile={dispatchAddUpload} />
-              )}
-            />
-            <Route
-              path={`${match.url}/new/folder`}
-              render={() => (
-                <NewFolder onAddFolderClick={this.onAddFolderClick} />
-              )}
-            />
-          </Switch>
+          <div className={styles.content}>
+            <Switch>
+              <Route
+                exact
+                path="/user"
+                render={() => (
+                  <DashboardMain
+                    folders={folders}
+                    files={files}
+                    match={match}
+                  />
+                )}
+              />
+              <Route
+                path={`${match.url}/folder/:id`}
+                render={({ match }) => (
+                  <Folder
+                    folders={folders}
+                    files={files}
+                    dispatchDeleteFolder={this.onDeleteFolder}
+                    match={match}
+                  />
+                )}
+              />
+              <Route
+                path="/user/upload"
+                render={({ match }) => (
+                  <Upload
+                    folders={folders}
+                    dispatchAddFile={dispatchAddUpload}
+                  />
+                )}
+              />
+              <Route
+                path={`${match.url}/new/folder`}
+                render={() => (
+                  <NewFolder onAddFolderClick={this.onAddFolderClick} />
+                )}
+              />
+            </Switch>
+          </div>
         </div>
       </div>
     );

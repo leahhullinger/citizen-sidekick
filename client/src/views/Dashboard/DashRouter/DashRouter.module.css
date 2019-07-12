@@ -1,14 +1,20 @@
 .container {
-  display: flex;
   height: 100vh;
-  position: relative;
+  display: flex;
 }
 
 .body {
-  flex: 1;
+  display: flex;
   overflow: auto;
+  position: relative;
 }
 
+.drawer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
 .mainContainer {
   height: 100%;
   display: grid;
@@ -27,8 +33,6 @@
 }
 
 @media (min-width: 768px) {
-  .container {
-  }
   .mainContainer {
     grid-template-columns: repeat(2, 1fr);
   }

@@ -8,11 +8,17 @@ import {
   Drawer,
   DrawerHeader,
   DrawerTitle,
-  DrawerSubtitle,
   DrawerContent
 } from "../../../ui/Drawer";
 import { Text } from "../../../ui/Text";
-import { List, ListItem } from "../../../ui/List";
+import {
+  List,
+  CollapsibleList,
+  ListItem,
+  SimpleListItem
+} from "../../../ui/List";
+import { Fab } from "../../../ui/Fab";
+import { Button } from "../../../ui/Button";
 
 class SideNav extends Component {
   constructor(props) {
@@ -38,65 +44,70 @@ class SideNav extends Component {
     return (
       <Drawer>
         <DrawerHeader>
-          <DrawerTitle>
-            <Text use="header3">DrawerHeader</Text>
-          </DrawerTitle>
-          <DrawerSubtitle>Subtitle</DrawerSubtitle>
+          <DrawerTitle>Citizen Sidekick</DrawerTitle>
         </DrawerHeader>
         <DrawerContent>
+          <Fab
+            icon="add"
+            label="New"
+            style={{
+              backgroundColor: "white",
+              color: "black",
+              fontWeight: 700,
+              marginTop: 25,
+              marginBottom: 20
+            }}
+          />
+          <CollapsibleList
+            handle={
+              <SimpleListItem
+                text="My Dashboard"
+                graphic="dashboard"
+                metaIcon="chevron_right"
+              />
+            }
+          />
+          <CollapsibleList
+            handle={
+              <SimpleListItem
+                text="Folders"
+                graphic="folder"
+                metaIcon="chevron_right"
+              />
+            }
+          >
+            {!!folders &&
+              folders.map(folder => {
+                return (
+                  <SimpleListItem graphic="folder">
+                    <Link
+                      key={folder.id}
+                      className={styles.link}
+                      to={`${match.url}/folder/${folder.id}`}
+                    >
+                      {folder.folder_name}
+                    </Link>
+                  </SimpleListItem>
+                );
+              })}
+          </CollapsibleList>
           <List>
-            <ListItem>Item 1</ListItem>
+            <ListItem>
+              Upload
+              <Link to={`${match.url}/upload`} />
+            </ListItem>
           </List>
         </DrawerContent>
       </Drawer>
-      // <>
-      //   <button
-      //     className={[styles.btn, isOpen ? styles.isOpen : null].join(" ")}
-      //     onClick={() => this.handleBtnClick()}
-      //   >
-      //     <Icon type={isOpen ? "arrow-left" : "hamburger"} size="40" />
-      //   </button>
-      //   <div
-      //     className={[styles.sideNav, isOpen ? styles.isOpen : null].join(" ")}
-      //   >
-      //     <div className={styles.content}>
-      //       <div className={styles.header}>
-      //         <div className={styles.imgWrapper}>
-      //           <img src={logo} />
-      //         </div>
-      //         <h2 className={styles.logo}>Sidekick</h2>
-      //       </div>
-      //       <div className={styles.section}>
-      //         <h3>Tools</h3>
-      //         <a href="#Upload">Transcribe</a>
-      //         <a>Search & Rescue</a>
-      //         <a>Code Backup</a>
-      //         <h3>Folders</h3>
-      //         {!!folders &&
-      //           folders.map(folder => {
-      //             return (
-      //               <Link
-      //                 key={folder.id}
-      //                 className={styles.link}
-      //                 to={`${match.url}/folder/${folder.id}`}
-      //               >
-      //                 {folder.folder_name}
-      //               </Link>
-      //             );
-      //           })}
-      //         <Link className={styles.sideNavLink} to={`${match.url}/upload`}>
-      //           <h3>+ UPLOAD</h3>
-      //         </Link>
+      // <div
+      //   className={[styles.sideNav, isOpen ? styles.isOpen : null].join(" ")}
+      // >
       //         <Link
       //           className={styles.sideNavLink}
       //           to={`${match.url}/new/folder`}
       //         >
       //           <h3>+ FOLDER</h3>
       //         </Link>
-      //       </div>
-      //     </div>
-      //   </div>
-      // </>
     );
   }
 }
