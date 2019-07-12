@@ -84,6 +84,7 @@ class SideNav extends Component {
                       key={folder.id}
                       className={styles.link}
                       to={`${match.url}/folder/${folder.id}`}
+                      style={{ textDecoration: "none" }}
                     >
                       {folder.folder_name}
                     </Link>

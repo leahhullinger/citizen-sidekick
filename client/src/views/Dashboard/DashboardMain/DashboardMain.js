@@ -25,12 +25,12 @@ class DashboardMain extends Component {
 
     return (
       <div className={styles.mainContainer}>
-        <div className={styles.recent}>
+        <div className={styles.wrapper}>
           <div className={styles.header}>
             <Text>Recent</Text>
           </div>
         </div>
-        <div className={styles.folders}>
+        <div className={styles.wrapper}>
           <div className={styles.header}>
             <Text>Folders</Text>
           </div>
@@ -38,7 +38,10 @@ class DashboardMain extends Component {
             {folders.map(folder => {
               return (
                 <GridCell span={3} key={folder.id}>
-                  <Link to={`${match.url}/folder/${folder.id}`}>
+                  <Link
+                    to={`${match.url}/folder/${folder.id}`}
+                    style={{ textDecoration: "none" }}
+                  >
                     <Button
                       icon="folder"
                       label={folder.folder_name}
@@ -51,8 +54,10 @@ class DashboardMain extends Component {
             })}
           </Grid>
         </div>
-        <div className={styles.files}>
-          <Text className={styles.header}>Files</Text>
+        <div className={styles.wrapper}>
+          <div className={styles.header}>
+            <Text>Files</Text>
+          </div>
           <Grid>
             {files.map &&
               (file => {
