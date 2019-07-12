@@ -1,37 +1,70 @@
 import React, { Component } from "react";
-// import { PrimaryBtn } from "../../Button/PrimaryBtn";
-import styles from "./FileCard.module.css";
-import { style } from "glamor";
+import { Typography } from "../../../ui/Typography";
+import {
+  Card,
+  CardPrimaryAction,
+  CardMedia,
+  CardActions,
+  CardActionButtons,
+  CardActionIcons
+} from "../../../ui/Card";
 
+const styles = {
+  typography: {
+    title: {
+      fontSize: 11,
+      fontWeight: 700,
+      textTransform: "capitalize",
+      color: "#404040"
+    },
+    subtitle: {
+      fontSize: 11,
+      fontWeight: 400,
+      color: "#404040"
+    }
+  }
+};
 export default class FileCard extends Component {
   constructor(props) {
     super(props);
   }
   render() {
-    const { date, title, notes, text, s3_url } = this.props.file;
+    const { file } = this.props;
+    console.log("this.props.file", this.props.file);
     return (
-      <div className={styles.container}>
-        <div className={styles.header}>
-          <div className={styles.imgWrapper}>
-            <img src={s3_url} />
+      <Card style={{ width: "12.5rem", margin: 10 }}>
+        <CardPrimaryAction>
+          {file.s3_url ? (
+            <CardMedia
+              square
+              style={{
+                backgroundImage: `url(${file.s3_url})`,
+                backgroundPosition: "top center"
+              }}
+            />
+          ) : (
+            <div style={{ padding: "20px 0" }}>
+              <i
+                class="material-icons"
+                style={{ fontSize: 72, color: "#BFBFBF" }}
+              >
+                note
+              </i>
+            </div>
+          )}
+          <div style={{ paddingTop: 5 }}>
+            <Typography style={styles.typography.title}>
+              {file.title}
+            </Typography>
           </div>
-        </div>
-        <div className={styles.col_1}>
-          <p className={styles.title}>{title}</p>
-          <p classname={style.date}>{date}</p>
-        </div>
-        <div className={styles.content}>
-          <p className={styles.notes}>Notes</p>
-          <p>{notes}</p>
-          <br />
-          <p className={styles.text}>Transcript</p>
-          <p>{text}</p>
-          <div className={styles.actions}>
-            {/* <SimpleButton btnText="EDIT" />
-            <SimpleButton btnText="TRANSCRIBE" /> */}
-          </div>
-        </div>
-      </div>
+          <>
+            <Typography style={styles.typography.subtitle}>
+              {file.date}
+            </Typography>
+          </>
+        </CardPrimaryAction>
+        <CardActions />
+      </Card>
     );
   }
 }

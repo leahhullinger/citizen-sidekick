@@ -35,23 +35,24 @@ class DashboardMain extends Component {
             <Text>Folders</Text>
           </div>
           <Grid>
-            {folders.map(folder => {
-              return (
-                <GridCell span={3} key={folder.id}>
-                  <Link
-                    to={`${match.url}/folder/${folder.id}`}
-                    style={{ textDecoration: "none" }}
-                  >
-                    <Button
-                      icon="folder"
-                      label={folder.folder_name}
-                      style={folderBtnStyle}
-                      outlined
-                    />
-                  </Link>
-                </GridCell>
-              );
-            })}
+            {!!folders &&
+              folders.map(folder => {
+                return (
+                  <GridCell span={3} key={folder.id}>
+                    <Link
+                      to={`${match.url}/folder/${folder.id}`}
+                      style={{ textDecoration: "none" }}
+                    >
+                      <Button
+                        icon="folder"
+                        label={folder.folder_name}
+                        style={folderBtnStyle}
+                        outlined
+                      />
+                    </Link>
+                  </GridCell>
+                );
+              })}
           </Grid>
         </div>
         <div className={styles.wrapper}>
@@ -59,13 +60,11 @@ class DashboardMain extends Component {
             <Text>Files</Text>
           </div>
           <Grid>
-            {files.map &&
-              (file => {
+            {!!files &&
+              files.map(file => {
                 return (
-                  <GridCell span={4} key={file.id}>
-                    <Button icon="folder" label={file.title} outlined>
-                      <Link to={`${match.url}/${file.id}`} />
-                    </Button>
+                  <GridCell span={4}>
+                    <FileCard file={file} />
                   </GridCell>
                 );
               })}
