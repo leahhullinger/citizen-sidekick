@@ -1,23 +1,23 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import FileCard from "../../../components/Card/FileCard/FileCard";
 import styles from "./DashboardMain.module.css";
+import { Grid, GridCell } from "../../../ui/Grid";
+import { Text } from "../../../ui/Text";
+import { Button } from "../../../ui/Button";
+
+const folderBtnStyle = {
+  borderColor: "#d8d8d8",
+  color: "#404040",
+  fontSize: 9,
+  width: "100%",
+  justifyContent: "left"
+};
 
 class DashboardMain extends Component {
-  // onAddFolderClick = folderName => {
-  //   axiosAddFolder(folderName)
-  //     .then(response => {
-  //       this.props.dispatchAddFolderToState(response.data.folder);
-  //     })
-  //     .catch(err => console.log(err));
-  // };
-
-  // onDeleteFolder = id => {
-  //   console.log(id);
-  //   axiosDeleteFolder(id).then(response => {
-  //     console.log(response);
-  //     this.props.dispatchDeleteFolder(id);
-  //   });
-  // };
+  constructor(props) {
+    super(props);
+  }
 
   handleInputUpdate = e => this.setState({ [e.target.name]: e.target.value });
   render() {
@@ -25,28 +25,47 @@ class DashboardMain extends Component {
 
     return (
       <div className={styles.mainContainer}>
-        <div>
-          <h4>Recent Files</h4>
-
-          {files.map(file => {
-            return (
-              <div key={file.id} className={styles.fileList}>
-                <p className={styles.title}>{file.title}</p>
-              </div>
-            );
-          })}
+        <div className={styles.recent}>
+          <div className={styles.header}>
+            <Text>Recent</Text>
+          </div>
         </div>
-        <div className={styles.view}>
-          <h4>VIEW 2</h4>
+        <div className={styles.folders}>
+          <div className={styles.header}>
+            <Text>Folders</Text>
+          </div>
+          <Grid>
+            {folders.map(folder => {
+              return (
+                <GridCell span={3} key={folder.id}>
+                  <Link to={`${match.url}/folder/${folder.id}`}>
+                    <Button
+                      icon="folder"
+                      label={folder.folder_name}
+                      style={folderBtnStyle}
+                      outlined
+                    />
+                  </Link>
+                </GridCell>
+              );
+            })}
+          </Grid>
         </div>
-        <div className={styles.view}>
-          <h4>VIEW </h4>
+        <div className={styles.files}>
+          <Text className={styles.header}>Files</Text>
+          <Grid>
+            {files.map &&
+              (file => {
+                return (
+                  <GridCell span={4} key={file.id}>
+                    <Button icon="folder" label={file.title} outlined>
+                      <Link to={`${match.url}/${file.id}`} />
+                    </Button>
+                  </GridCell>
+                );
+              })}
+          </Grid>
         </div>
-
-        {/* <div>
-          <h1 className={styles.mainTitle}> / dash</h1>
-        </div> */}
-        {/* <div>hello</div> */}
       </div>
     );
   }

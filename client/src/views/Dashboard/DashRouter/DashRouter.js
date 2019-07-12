@@ -53,8 +53,8 @@ class DashRouter extends Component {
     return (
       <div className={styles.container}>
         <TopNav />
+        <SideNav folders={folders} match={match} />
         <div className={styles.body}>
-          <SideNav folders={folders} match={match} />
           <div className={styles.content}>
             <Switch>
               <Route
