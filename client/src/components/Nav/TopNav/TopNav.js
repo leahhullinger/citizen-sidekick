@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "./TopNav.module.css";
 import {
   TopAppBar,
   TopAppBarRow,
@@ -14,15 +13,24 @@ const TopNav = () => {
   return (
     <TopAppBar
       style={{
-        color: "#0D0D0D",
-        borderBottomColor: "#8C8C8C",
-        borderBottomWidth: 1
+        backgroundColor: "rgba(13, 13, 13, 0.8)",
+        zIndex: 100
       }}
       fixed
     >
       <TopAppBarRow>
         <TopAppBarSection>
-          <TopAppBarTitle>Citizen Sidekick</TopAppBarTitle>
+          <TopAppBarTitle
+            style={{
+              color: "#0455BF",
+              fontSize: 16,
+              fontWeight: 900,
+              letterSpacing: "0.2rem",
+              textTransform: "capitalize"
+            }}
+          >
+            Citizen Sidekick
+          </TopAppBarTitle>
         </TopAppBarSection>
       </TopAppBarRow>
     </TopAppBar>

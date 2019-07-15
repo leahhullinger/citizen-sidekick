@@ -38,7 +38,7 @@ class DashboardMain extends Component {
             {!!folders &&
               folders.map(folder => {
                 return (
-                  <GridCell span={3} key={folder.id}>
+                  <GridCell span={2} key={folder.id}>
                     <Link
                       to={`${match.url}/folder/${folder.id}`}
                       style={{ textDecoration: "none" }}
@@ -63,7 +63,7 @@ class DashboardMain extends Component {
             {!!files &&
               files.map(file => {
                 return (
-                  <GridCell span={4}>
+                  <GridCell span={3}>
                     <FileCard file={file} />
                   </GridCell>
                 );
