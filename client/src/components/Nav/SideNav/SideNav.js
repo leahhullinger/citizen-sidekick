@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styles from "./SideNav.module.css";
 import { Route, Link } from "react-router-dom";
-import { Icon } from "mx-react-components";
 import { GET_FOLDERS_COMPLETE } from "../../../ducks/constants";
 
 import {
@@ -100,15 +99,6 @@ class SideNav extends Component {
           </List>
         </DrawerContent>
       </Drawer>
-      // <div
-      //   className={[styles.sideNav, isOpen ? styles.isOpen : null].join(" ")}
-      // >
-      //         <Link
-      //           className={styles.sideNavLink}
-      //           to={`${match.url}/new/folder`}
-      //         >
-      //           <h3>+ FOLDER</h3>
-      //         </Link>
     );
   }
 }
