@@ -85,16 +85,15 @@ passport.deserializeUser(function(user, done) {
 app.get(
   "/auth",
   passport.authenticate("auth0", {
-    successRedirect: "http://localhost:3000/user",
+    successRedirect: "http://localhost:3000/dash",
     failureRedirect: "/auth/callback"
   })
 );
 
 app.get("/auth/callback", (req, res, next) => {
-  console.log("hitting /dash");
+  console.log("hitting /dash", req.user);
   if (!req.user) {
     res.redirect("/");
-    console.log(req);
     return res.status(401).send("Log in required");
   } else {
     res.status(200).send(req.user);
