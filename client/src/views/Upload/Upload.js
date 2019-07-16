@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { axiosAddFile } from "../../ducks/actions";
 import { API_URL } from "../../ducks/constants";
 // components
-import FileSelect from "../../components/FileSelect/FileSelect";
+import FileSelect, { FileUpload } from "../../components/FileSelect/FileSelect";
 import PreviewCard from "../../components/Card/PreviewCard/PreviewCard";
 import { Loading } from "../../components/Loading/Loading";
 import { PrimaryBtn } from "../../components/Button/PrimaryBtn";
@@ -122,20 +122,18 @@ class Upload extends Component {
           {!!loading && <Loading className={styles.previewCardPlaceholder} />}
           {uploads.map((file, index) => {
             return (
-              !file.isSubmitted && (
-                <PreviewCard
-                  key={index}
-                  file={file}
-                  folders={this.props.folders}
-                  onUpdateUpload={this.onUpdateUpload}
-                  onTranscript={this.onTranscript}
-                  onSubmitClick={this.onSubmitClick}
-                  onCancel={this.onCancelUploadFile}
-                />
-              )
+              <PreviewCard
+                key={index}
+                file={file}
+                folders={this.props.folders}
+                onUpdateUpload={this.onUpdateUpload}
+                onTranscript={this.onTranscript}
+                onSubmitClick={this.onSubmitClick}
+                onCancel={this.onCancelUploadFile}
+              />
             );
           })}
-          {(fileCount < 2 || (fileCount === 2 && !loading)) && (
+          {fileCount < 1 && !loading && (
             <FileSelect
               setFileUrl={this.setFileUrl}
               onUpdateLoading={this.onUpdateLoading}
@@ -146,18 +144,18 @@ class Upload extends Component {
           <div
             className={!submittedFiles.length ? styles.hidden : styles.saved}
           >
-            {submittedFiles.map(file => (
+            {/* {submittedFiles.map(file => (
               <p className={styles.savedItem} key={file.filename}>
                 + {file.filename} saved
               </p>
-            ))}
+            ))} */}
           </div>
         </div>
-        <div className={styles.footer}>
-          <Link to="/user">
+        {/* <div className={styles.footer}>
+          <Link to="/dash">
             <PrimaryBtn btnText="Back" />
           </Link>
-        </div>
+        </div> */}
       </div>
     );
   }

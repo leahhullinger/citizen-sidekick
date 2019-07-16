@@ -116,7 +116,7 @@ class Folder extends Component {
             </div>
           </div>
           <div className={styles.footer}>
-            <Link to="/user">
+            <Link to="/dash">
               <PrimaryBtn btnText="Back" />
             </Link>
           </div>

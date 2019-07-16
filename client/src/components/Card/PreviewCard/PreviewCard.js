@@ -2,10 +2,19 @@ import React, { Component } from "react";
 
 import { Thumbnail } from "../../Thumbnail/Thumbnail";
 // import { SimpleButton } from "../../Button/Button";
+import { TextField } from "../../../ui/TextFields";
+import { TextArea } from "../../Form/TextArea/TextArea";
 import { TextDetect } from "../../TextDetect/TextDetect";
+import { Loading } from "../../Loading/Loading";
 import { Form } from "../../Form/Form";
 import { Card } from "../Card";
 import styles from "./PreviewCard.module.css";
+import {
+  CardPrimaryAction,
+  CardActions,
+  CardActionButtons,
+  CardActionButton
+} from "@rmwc/card";
 
 class PreviewCard extends Component {
   constructor(props) {
@@ -14,6 +23,7 @@ class PreviewCard extends Component {
     this.state = {
       isFormOpen: false,
       isTranscribeOpen: false,
+      isTranscribing: false,
       notes: file.notes || {
         title: "",
         folder_id: 0,
@@ -21,6 +31,12 @@ class PreviewCard extends Component {
         text: ""
       }
     };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (!prevProps.file.transcript && !!this.props.file.transcript) {
+      this.setState({ isTranscribing: false });
+    }
   }
 
   onUpdateInput = e =>
@@ -41,13 +57,57 @@ class PreviewCard extends Component {
     } = this.props;
     return (
       <Card onClick={() => onCancel(file.filename)}>
-        <Thumbnail
-          // className={styles.thumbnail}
-          src={file.s3_url}
-          alt="upload preview"
-        />
-        <div className={styles.actions}>
-          {/* <SimpleButton
+        <CardPrimaryAction style={{ display: "flex", flexDirection: "row" }}>
+          <Thumbnail
+            // className={styles.thumbnail}
+            src={file.s3_url}
+            alt="upload preview"
+          />
+          {this.state.isTranscribing && <Loading />}
+          {!!file.transcript && (
+            <TextArea
+              placeholder="Transription"
+              value={file.transcript}
+              name="transcription"
+              onChange={e => {
+                onUpdateUpload(file.filename, {
+                  transcript: e.target.value
+                });
+              }}
+              disabled={!file.transcript}
+            />
+            // <TextField
+            //   textarea
+            //   outlined
+            //   fullwidth
+            //   label="Transcription"
+            //   rows={8}
+            //   maxLength={20}
+            //   characterCount
+            //   name="transcription"
+            //   value={!!file.transcript && file.transcript}
+            //   onChange={e => {
+            //     onUpdateUpload(file.filename, {
+            //       transcript: e.target.value
+            //     });
+            //   }}
+            // />
+          )}
+        </CardPrimaryAction>
+        <CardActions>
+          <CardActionButtons>
+            <CardActionButton
+              onClick={() => {
+                !file.transcription && onTranscript(file.filename);
+                this.setState({ isTranscribing: true });
+              }}
+            >
+              transcribe
+            </CardActionButton>
+            <CardActionButton>save</CardActionButton>
+          </CardActionButtons>
+        </CardActions>
+        {/* <SimpleButton
             btnText="ADD NOTES"
             onClick={() => this.setState({ isFormOpen: !isFormOpen })}
             isActive={isFormOpen}
@@ -66,7 +126,6 @@ class PreviewCard extends Component {
             btnText="SAVE"
             onClick={() => onSubmitClick(file.filename)}
           /> */}
-        </div>
         {isFormOpen && (
           <div className={styles.formWrapper}>
             <Form
@@ -83,7 +142,7 @@ class PreviewCard extends Component {
             /> */}
           </div>
         )}
-        <TextDetect
+        {/* <TextDetect
           focusOnLoad={false}
           onUpdateTranscription={onUpdateUpload}
           file={file}
@@ -92,7 +151,7 @@ class PreviewCard extends Component {
           onClose={() => {
             this.setState({ isTranscribeOpen: false });
           }}
-        />
+        /> */}
         {/* </Thumbnail> */}
       </Card>
     );

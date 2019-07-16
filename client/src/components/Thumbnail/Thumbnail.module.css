@@ -1,6 +1,8 @@
 .thumbWrapper {
-  height: 300px;
-  max-width: 300px;
+  padding-top: 15px;
+  flex: 1;
+  height: 400px;
+  max-width: 400px;
   overflow: hidden;
   padding-bottom: 20px;
 }

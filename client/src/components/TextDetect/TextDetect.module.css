@@ -1,3 +1,15 @@
+.transcription {
+}
+
+.transcription.mdc-dialog .mdc-dialog__surface {
+  width: 80%;
+  color: blue;
+}
+
+.result {
+  min-width: 400px;
+}
+
 .container {
   width: 80%;
   display: flex;
@@ -20,12 +32,11 @@
   letter-spacing: 0.1em;
   color: transparent;
 }
-.body {
+
+.content {
   max-height: 100%;
-  width: 90%;
   display: flex;
   justify-content: space-between;
-  padding: 30px;
 }
 
 .imgWrapper {
@@ -48,6 +59,7 @@
 .textResults {
   height: auto;
   width: 100%;
+  min-width: 400px;
   overflow-y: scroll;
   margin: 0;
 }
@@ -57,4 +69,12 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+}
+
+@media (min-width: 592px) {
+  .transcription.mdc-dialog .mdc-dialog__surface {
+    max-width: calc(100vw - 32px);
+    width: calc(100vw - 32px);
+    color: blue;
+  }
 }

@@ -1,6 +1,12 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
-import { Card } from "../Card/Card";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions
+} from "../../ui/Dialog";
+import { TextField } from "../../ui/TextFields";
 // import { Modal } from "mx-react-components";
 // import { Button, SimpleButton } from "../Button/Button";
 import { Thumbnail } from "../Thumbnail/Thumbnail";
@@ -17,41 +23,35 @@ export const TextDetect = ({
   onClose
 }) => {
   return (
-    <Modal show={isOpen} onHide={onClose} className={styles.container}>
-      <div className={styles.header}>
+    <Dialog
+      open={isOpen}
+      onClose={evt => console.log(evt)}
+      className={styles.transcription}
+    >
+      <DialogTitle>
         <h2 className={styles.light}>cs</h2>
         <h2>/ transcribe</h2>
-      </div>
-      <div className={styles.body}>
-        <div className={styles.imgWrapper}>
-          <img className={styles.img} src={file.s3_url} />
-        </div>
-        {!!file.transcript && (
-          <TextArea
-            className={styles.textResults}
-            placeholder="Transription"
-            value={file.transcript}
-            name="transcription"
-            onChange={e => {
-              onUpdateTranscription(file.filename, {
-                transcript: e.target.value
-              });
-            }}
-            className={styles.text}
-            disabled={!file.transcript}
-          />
-        )}
-        {!file.transcript && <Loading />}
-      </div>
-      <div className={styles.footer}>
-        {/* <Button
-          onClick={() => {
-            onClose();
+      </DialogTitle>
+      <DialogContent className={styles.content}>
+        <img className={styles.img} src={file.s3_url} />
+        <TextField
+          textarea
+          outlined
+          fullwidth
+          label="Transcription"
+          rows={8}
+          maxLength={20}
+          characterCount
+          name="transcription"
+          value={!!file.transcript && file.transcript}
+          onChange={e => {
+            onUpdateTranscription(file.filename, {
+              transcript: e.target.value
+            });
           }}
-        >
-          Save
-        </Button> */}
-      </div>
-    </Modal>
+          className={styles.result}
+        />
+      </DialogContent>
+    </Dialog>
   );
 };

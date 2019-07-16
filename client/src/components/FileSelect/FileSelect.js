@@ -9,6 +9,40 @@ import styles from "./FileSelect.module.css";
 
 import { updateSelectedFiles } from "../../ducks/actions";
 
+// export class FileUpload extends Component {
+//   state = {
+//     files: [],
+//     s3Urls: []
+//   };
+
+//   onUpload = files => {
+//     let file = files[0];
+
+//     axios
+//       .post(`${API_URL}/aws`, {
+//         filename: file.name,
+//         filetype: file.type
+//       })
+
+//       .then(function(result) {
+//         var signedUrl = result.data;
+//         var options = {
+//           headers: {
+//             "Content-Type": file.type
+//           }
+//         };
+//         return axios.put(signedUrl, file, options);
+//       })
+//       .then(res => {
+//         this.props.setFileUrl(res.config.url, file);
+//         window.location.replace("/dash/upload");
+//       })
+//       .catch(function(err) {
+//         console.log(2, err);
+//       });
+//   };
+// }
+
 class FileSelect extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +59,6 @@ class FileSelect extends Component {
 
   onDrop = files => {
     var file = files[0];
-    console.log(files);
     this.props.onUpdateLoading(true);
 
     axios
