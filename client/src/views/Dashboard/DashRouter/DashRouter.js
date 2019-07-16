@@ -51,15 +51,15 @@ class DashRouter extends Component {
   render() {
     const { folders, files, dispatchAddUpload, match } = this.props;
     return (
-      <div className={styles.container}>
+      <>
         <TopNav />
-        <SideNav folders={folders} match={match} />
         <div className={styles.body}>
+          <SideNav folders={folders} match={match} />
           <div className={styles.content}>
             <Switch>
               <Route
                 exact
-                path="/user"
+                path={match.url}
                 render={() => (
                   <DashboardMain
                     folders={folders}
@@ -80,7 +80,7 @@ class DashRouter extends Component {
                 )}
               />
               <Route
-                path="/user/upload"
+                path={`${match.url}/upload`}
                 render={({ match }) => (
                   <Upload
                     folders={folders}
@@ -97,7 +97,7 @@ class DashRouter extends Component {
             </Switch>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 }

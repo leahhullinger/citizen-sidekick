@@ -42,9 +42,6 @@ class SideNav extends Component {
     const { folders, match } = this.props;
     return (
       <Drawer>
-        <DrawerHeader>
-          <DrawerTitle>Citizen Sidekick</DrawerTitle>
-        </DrawerHeader>
         <DrawerContent>
           <Fab
             icon="add"
@@ -62,7 +59,9 @@ class SideNav extends Component {
               <SimpleListItem
                 text="My Dashboard"
                 graphic="dashboard"
-                metaIcon="chevron_right"
+                // metaIcon="chevron_right"
+                tag={Link}
+                to={`${match.url}`}
               />
             }
           />
@@ -92,9 +91,8 @@ class SideNav extends Component {
               })}
           </CollapsibleList>
           <List>
-            <ListItem>
+            <ListItem tag={Link} to={`${match.url}/upload`}>
               Upload
-              <Link to={`${match.url}/upload`} />
             </ListItem>
           </List>
         </DrawerContent>

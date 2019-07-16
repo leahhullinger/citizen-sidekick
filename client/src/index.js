@@ -6,16 +6,23 @@ import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "./store";
-import { RMWCProvider } from "@rmwc/provider";
+import { ThemeProvider } from "@rmwc/theme";
 
 ReactDOM.render(
-  <RMWCProvider>
+  <ThemeProvider
+    options={{
+      primary: "#3d3d3d",
+      secondary: "#0455BF",
+      onPrimary: "#0455BF",
+      onSecondary: "#fff"
+    }}
+  >
     <Provider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </Provider>
-  </RMWCProvider>,
+  </ThemeProvider>,
   document.getElementById("root")
 );
 

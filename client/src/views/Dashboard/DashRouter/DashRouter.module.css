@@ -1,15 +1,13 @@
-.container {
-  height: 100vh;
+.body {
   display: flex;
+  height: calc(100% - 64px);
+  padding-top: 64px;
 }
 
-.body {
-  flex: 1;
+.content {
   width: 100%;
   overflow: auto;
-  position: relative;
-  padding: 0;
-  margin: 0;
+  padding: 25px;
 }
 
 .drawer {

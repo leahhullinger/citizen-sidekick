@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import {
   TopAppBar,
   TopAppBarRow,
@@ -11,13 +10,7 @@ import "@material/top-app-bar/dist/mdc.top-app-bar.css";
 
 const TopNav = () => {
   return (
-    <TopAppBar
-      style={{
-        backgroundColor: "rgba(13, 13, 13, 0.8)",
-        zIndex: 100
-      }}
-      fixed
-    >
+    <TopAppBar fixed>
       <TopAppBarRow>
         <TopAppBarSection>
           <TopAppBarTitle
